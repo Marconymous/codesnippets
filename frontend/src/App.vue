@@ -1,6 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <TestComponent/>
+  <TestComponent msg="Suiii"/>
 </template>
 
 <script>
