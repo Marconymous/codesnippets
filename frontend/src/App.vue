@@ -1,5 +1,5 @@
 <template>
-  <TestComponent msg="Suiii"/>
+  <TestComponent msg="Suiii" />
 </template>
 
 <script>
