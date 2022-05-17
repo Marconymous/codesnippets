@@ -1,20 +1,28 @@
 package dev.marconymous.codesnippets.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProgrammingLanguage {
+
+  private String UUID;
   private String name;
+  @JsonIgnore
   private List<CodeSnippet> codeSnippets;
   private String description;
   private String imageUrl;
 
   public ProgrammingLanguage() {
+    this(null, null, null);
   }
 
   public ProgrammingLanguage(String name, String description, String imageUrl) {
     this.name = name;
     this.description = description;
     this.imageUrl = imageUrl;
+    this.codeSnippets = new ArrayList<>();
   }
 
   public String getName() {
@@ -47,5 +55,13 @@ public class ProgrammingLanguage {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public String getUUID() {
+    return UUID;
+  }
+
+  public void setUUID(String UUID) {
+    this.UUID = UUID;
   }
 }

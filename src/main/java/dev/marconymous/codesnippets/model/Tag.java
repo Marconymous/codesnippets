@@ -1,9 +1,15 @@
 package dev.marconymous.codesnippets.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tag {
+
+  private String UUID;
   private String name;
+  @JsonIgnore
   private List<CodeSnippet> codeSnippets;
 
   public Tag() {
@@ -11,7 +17,7 @@ public class Tag {
   }
 
   public Tag(String name) {
-    this.name = name;
+    this(name, new ArrayList<>());
   }
 
   public Tag(String name, List<CodeSnippet> codeSnippets) {
@@ -33,5 +39,13 @@ public class Tag {
 
   public void setCodeSnippets(List<CodeSnippet> codeSnippets) {
     this.codeSnippets = codeSnippets;
+  }
+
+  public String getUUID() {
+    return UUID;
+  }
+
+  public void setUUID(String UUID) {
+    this.UUID = UUID;
   }
 }

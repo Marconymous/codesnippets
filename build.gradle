@@ -22,10 +22,15 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    compileOnly('jakarta.platform:jakarta.jakartaee-api:9.1.0')
+    compileOnly('jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0')
+    compileOnly('jakarta.ws.rs:jakarta.ws.rs-api:3.0.0')
+    compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }
 
 test {
