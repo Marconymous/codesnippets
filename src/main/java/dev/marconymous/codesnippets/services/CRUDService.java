@@ -28,9 +28,9 @@ public abstract class CRUDService {
       throw new RuntimeException("Invalid UUID: " + uuid);
     }
 
-//    if (data == null) {
-//      return Response.status(Response.Status.NOT_FOUND).build();
-//    }
+    if (data == null) {
+      return Response.status(Response.Status.NOT_FOUND).build();
+    }
 
     return Response.ok().entity(data).build();
   }

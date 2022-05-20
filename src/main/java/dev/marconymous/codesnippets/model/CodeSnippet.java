@@ -2,6 +2,8 @@ package dev.marconymous.codesnippets.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.marconymous.codesnippets.data.DataHandler;
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,13 +17,16 @@ public class CodeSnippet {
   private Date creationDate;
 
   @JsonIgnore
+  @JsonbTransient
   private List<Tag> tags;
   private Visibility visibility;
   private ApplicationUser creator;
   @JsonIgnore
+  @JsonbTransient
   private ProgrammingLanguage programmingLanguage;
 
   public CodeSnippet() {
+    this.tags = new ArrayList<>();
   }
 
   public CodeSnippet(String title, String content, Date creationDate, Visibility visibility, ApplicationUser creator, ProgrammingLanguage programmingLanguage) {
@@ -32,7 +37,6 @@ public class CodeSnippet {
     this.creator = creator;
     this.programmingLanguage = programmingLanguage;
     this.tags = new ArrayList<>();
-    programmingLanguage.getCodeSnippets().add(this);
   }
 
   public String getTitle() {
@@ -69,7 +73,6 @@ public class CodeSnippet {
 
   public void addTag(Tag tag) {
     tags.add(tag);
-    tag.getCodeSnippets().add(this);
   }
 
   public Visibility getVisibility() {
@@ -93,13 +96,7 @@ public class CodeSnippet {
   }
 
   public void setProgrammingLanguage(ProgrammingLanguage programmingLanguage) {
-    if (this.programmingLanguage != null) {
-      this.programmingLanguage.getCodeSnippets().remove(this);
-    }
     this.programmingLanguage = programmingLanguage;
-    if (programmingLanguage != null) {
-      programmingLanguage.getCodeSnippets().add(this);
-    }
   }
 
   public String getUUID() {
@@ -110,27 +107,27 @@ public class CodeSnippet {
     this.UUID = UUID;
   }
 
+  @SuppressWarnings("unused")
   public String getProgrammingLanguageUUID() {
     return programmingLanguage.getUUID();
   }
 
+  @SuppressWarnings("unused")
   public void setProgrammingLanguageUUID(String programmingLanguageUUID) {
-    var programmingLanguage = DataHandler.getInstance().getLanguageByUUID(programmingLanguageUUID);
-
-    if (programmingLanguage != null) {
-      programmingLanguage.getCodeSnippets().add(this);
-      this.programmingLanguage = programmingLanguage;
-    }
+    this.programmingLanguage = DataHandler.getLanguageByUUID(programmingLanguageUUID);
   }
 
+  @SuppressWarnings("unused")
+  @JsonbProperty
   public String[] getTagUUIDs() {
     return tags.stream().map(Tag::getUUID).toArray(String[]::new);
   }
 
+  @SuppressWarnings("unused")
   public void setTagUUIDs(String[] tagUUIDs) {
-    tags.clear();
+    System.out.println("Called setTagUUIDs");
     for (String tagUUID : tagUUIDs) {
-      var tag = DataHandler.getInstance().getTagByUUID(tagUUID);
+      var tag = DataHandler.getTagByUUID(tagUUID);
       addTag(tag);
     }
   }

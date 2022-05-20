@@ -15,14 +15,14 @@ public class CodeSnippetService extends CRUDService {
   @Override
   @Produces(MediaType.APPLICATION_JSON)
   public Response getAll() {
-    return generateResponseForGET(DataHandler.getInstance().getCodeSnippetList());
+    return generateResponseForGET(DataHandler.getCodeSnippetList());
   }
 
   @Override
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public Response getSingle(@QueryParam("uuid") String uuid) {
-    var data = DataHandler.getInstance().getCodeSnippetByUUID(uuid);
+    var data = DataHandler.getCodeSnippetByUUID(uuid);
 
     return generateResponseForGET(data, uuid);
   }
