@@ -1,0 +1,297 @@
+{
+	"id": "2a75d343-6a37-4fd6-bbb1-a97b169f0c24",
+	"name": "Codesnippets",
+	"timestamp": "2022-05-23T16:36:05.797Z",
+	"collection_id": "16371436-3ab909d2-b6bf-47f0-bee6-f99578ad8838",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 9,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "c97503dd-fc7f-49b1-8706-91ca5b1de9cc",
+			"name": "Read All Codesnippets",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet/all",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "48272c39-1d9f-4a5e-8174-54baf9a09f45",
+			"name": "Read Single CodeSnippet (Correct UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=d9212ce9-09b5-4e22-8820-3d319047b318",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "106944f0-15d0-41fb-975b-e34153872120",
+			"name": "Read Single CodeSnippet (Incorrect UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=none",
+			"time": 10,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 500": true
+			},
+			"testPassFailCounts": {
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 500": true
+				}
+			]
+		},
+		{
+			"id": "c3e8183b-f26f-469c-bf28-7f34e6c418ba",
+			"name": "Read All Tags",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag/all",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4d6faf6b-0d4c-46ca-98fd-06227e7ad6d8",
+			"name": "Read Single Tag (Correct UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=4c643935-f395-431b-bff8-8a76fc2050b5",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "43a1d0c4-8c2e-49c1-8d12-384fb78f5cb2",
+			"name": "Read Single Tag (Incorrect UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=none",
+			"time": 5,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 500": true
+			},
+			"testPassFailCounts": {
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 500": true
+				}
+			]
+		},
+		{
+			"id": "2314c2fd-d763-4ffe-8818-a31e849ab6d4",
+			"name": "Read All Languages",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language/all",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "87c6c860-c114-4a46-a967-e0d2b662198f",
+			"name": "Read Single Language (Correct UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=c2c79790-814c-43bf-ac32-782709fb2c98",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "33525df5-63b2-4318-8b90-23877f0a5ce8",
+			"name": "Read Single Language (Incorrect UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=none",
+			"time": 7,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 500": true
+			},
+			"testPassFailCounts": {
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 500": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 78,
+	"collection": {
+		"requests": [
+			{
+				"id": "c97503dd-fc7f-49b1-8706-91ca5b1de9cc",
+				"method": "GET"
+			},
+			{
+				"id": "48272c39-1d9f-4a5e-8174-54baf9a09f45",
+				"method": "GET"
+			},
+			{
+				"id": "106944f0-15d0-41fb-975b-e34153872120",
+				"method": "GET"
+			},
+			{
+				"id": "c3e8183b-f26f-469c-bf28-7f34e6c418ba",
+				"method": "GET"
+			},
+			{
+				"id": "4d6faf6b-0d4c-46ca-98fd-06227e7ad6d8",
+				"method": "GET"
+			},
+			{
+				"id": "43a1d0c4-8c2e-49c1-8d12-384fb78f5cb2",
+				"method": "GET"
+			},
+			{
+				"id": "2314c2fd-d763-4ffe-8818-a31e849ab6d4",
+				"method": "GET"
+			},
+			{
+				"id": "87c6c860-c114-4a46-a967-e0d2b662198f",
+				"method": "GET"
+			},
+			{
+				"id": "33525df5-63b2-4318-8b90-23877f0a5ce8",
+				"method": "GET"
+			}
+		]
+	}
+}

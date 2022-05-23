@@ -22,6 +22,7 @@ public class TagService extends CRUDService{
   @Produces(MediaType.APPLICATION_JSON)
   @Override
   public Response getSingle(@QueryParam("uuid") String uuid) {
-    return generateResponseForGET(DataHandler.getTagByUUID(uuid));
+    var data = DataHandler.getTagByUUID(uuid);
+    return generateResponseForGET(data);
   }
 }

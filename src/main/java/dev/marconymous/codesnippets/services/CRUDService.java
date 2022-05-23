@@ -24,12 +24,8 @@ public abstract class CRUDService {
   }
 
   private Response generateResponseForGET(Object data, String uuid, boolean checkUUID) {
-    if (uuidIsInvalid(uuid) && checkUUID) {
-      throw new RuntimeException("Invalid UUID: " + uuid);
-    }
-
-    if (data == null) {
-      return Response.status(Response.Status.NOT_FOUND).build();
+    if (uuidIsInvalid(uuid) && checkUUID || data == null) {
+      throw new IllegalArgumentException("Invalid UUID: " + uuid);
     }
 
     return Response.ok().entity(data).build();

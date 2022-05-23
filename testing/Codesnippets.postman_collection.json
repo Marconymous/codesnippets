@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "3ab909d2-b6bf-47f0-bee6-f99578ad8838",
+		"name": "Codesnippets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16371436"
+	},
+	"item": [
+		{
+			"name": "CodeSnippets",
+			"item": [
+				{
+					"name": "Read All Codesnippets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"        pm.response.to.have.status(200);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/snippet/all",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"snippet",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Single CodeSnippet (Correct UUID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"        pm.response.to.have.status(200);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/snippet?uuid=d9212ce9-09b5-4e22-8820-3d319047b318",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"snippet"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "d9212ce9-09b5-4e22-8820-3d319047b318"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Single CodeSnippet (Incorrect UUID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", () => {",
+									"        pm.response.to.have.status(500);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/snippet?uuid=none",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"snippet"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "none"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Read All Tags",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"        pm.response.to.have.status(200);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/tag/all",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"tag",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Single Tag (Correct UUID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"        pm.response.to.have.status(200);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/tag?uuid=4c643935-f395-431b-bff8-8a76fc2050b5",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"tag"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "4c643935-f395-431b-bff8-8a76fc2050b5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Single Tag (Incorrect UUID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", () => {",
+									"        pm.response.to.have.status(500);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/tag?uuid=none",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"tag"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "none"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Programming Language",
+			"item": [
+				{
+					"name": "Read All Languages",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"        pm.response.to.have.status(200);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/language/all",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"language",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Single Language (Correct UUID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"        pm.response.to.have.status(200);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/language?uuid=c2c79790-814c-43bf-ac32-782709fb2c98",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"language"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "c2c79790-814c-43bf-ac32-782709fb2c98"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Single Language (Incorrect UUID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", () => {",
+									"        pm.response.to.have.status(500);",
+									"    } ",
+									")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API-URL}}/language?uuid=none",
+							"host": [
+								"{{API-URL}}"
+							],
+							"path": [
+								"language"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "none"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "API-URL",
+			"value": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api"
+		}
+	]
+}
