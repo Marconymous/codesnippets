@@ -1,18 +1,28 @@
 package dev.marconymous.codesnippets.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.json.bind.annotation.JsonbProperty;
-import jakarta.json.bind.annotation.JsonbTransient;
-
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Class Representing a Programming Language
+ */
 public class ProgrammingLanguage {
 
+  /**
+   * The UUID of the Programming Language
+   */
   private String UUID;
+
+  /**
+   * The name of the Programming Language
+   */
   private String name;
 
+  /**
+   * Description of the Programming Language
+   */
   private String description;
+
+  /**
+   * The URL for the image of the Programming Language
+   */
   private String imageUrl;
 
   public ProgrammingLanguage() {

@@ -1,8 +1,22 @@
 package dev.marconymous.codesnippets.model;
 
+/**
+ * Class representing a user.
+ */
 public class User {
+  /**
+   * The user's UUID.
+   */
   private String userUUID;
+
+  /**
+   * The user's username.
+   */
   private String userName;
+
+  /**
+   * The user's password.
+   */
   private String password;
 
   public User() {

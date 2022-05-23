@@ -4,10 +4,28 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Represents an application user.
+ */
 public class ApplicationUser extends User {
+  /**
+   * The Date when the user was created.
+   */
   private Date signUpDate;
+
+  /**
+   * The list of the user's favorite snippets.
+   */
   private List<CodeSnippet> favoriteSnippets;
+
+  /**
+   * The list of languages the user knows.
+   */
   private List<ProgrammingLanguage> languages;
+
+  /**
+   * The list of the user's created snippets.
+   */
   private List<CodeSnippet> createdSnippets;
 
   public ApplicationUser() {

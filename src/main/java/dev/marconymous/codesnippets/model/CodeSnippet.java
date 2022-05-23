@@ -9,18 +9,50 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * A class representing a code snippet.
+ */
 public class CodeSnippet {
-
+  /**
+   * The id of the code snippet.
+   */
   private String UUID;
+
+  /**
+   * The title of the code snippet.
+   */
   private String title;
+
+  /**
+   * The Content of the code snippet.
+   */
   private String content;
+
+  /**
+   * The date the code snippet was created.
+   */
   private Date creationDate;
 
+  /**
+   * The list of tags associated with the code snippet.
+   */
   @JsonIgnore
   @JsonbTransient
   private List<Tag> tags;
+
+  /**
+   * The visibility of the code snippet.
+   */
   private Visibility visibility;
+
+  /**
+   * The User who created the code snippet.
+   */
   private ApplicationUser creator;
+
+  /**
+   * The Language for which this snippet is
+   */
   @JsonIgnore
   @JsonbTransient
   private ProgrammingLanguage programmingLanguage;
