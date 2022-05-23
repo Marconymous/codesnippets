@@ -7,6 +7,8 @@ import jakarta.ws.rs.core.Response;
  * Class to implement CRUD operations.
  */
 public abstract class CRUDService {
+  protected final String UUID_REGEX = Config.getProperty("uuid.regexp");
+
   /**
    * List all items of class.
    *
@@ -23,8 +25,6 @@ public abstract class CRUDService {
    */
   @SuppressWarnings("unused")
   public abstract Response getSingle(String uuid);
-
-  protected final String UUID_REGEX = Config.getProperty("uuid.regexp");
 
   /**
    * Check if UUID is valid.

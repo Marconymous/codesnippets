@@ -15,6 +15,7 @@ import jakarta.ws.rs.core.Response;
 public class ProgrammingLanguageService extends CRUDService {
   /**
    * Lists all programming languages.
+   *
    * @return Response with all programming languages.
    */
   @Override

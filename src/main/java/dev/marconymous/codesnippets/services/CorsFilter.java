@@ -15,7 +15,7 @@ public class CorsFilter implements ContainerResponseFilter {
   /**
    * Allow CORS from any origin.
    *
-   * @param requestContext request context.
+   * @param requestContext  request context.
    * @param responseContext response context.
    */
   @Override

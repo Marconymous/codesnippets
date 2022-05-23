@@ -7,6 +7,7 @@ public enum Visibility {
 
   private final UserViewRule viewRule;
   private final UserSuggestionRule suggestRule;
+
   Visibility(UserViewRule viewRule, UserSuggestionRule suggestRule) {
     this.viewRule = viewRule;
     this.suggestRule = suggestRule;
