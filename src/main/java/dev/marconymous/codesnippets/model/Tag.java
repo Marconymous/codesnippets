@@ -1,10 +1,18 @@
 package dev.marconymous.codesnippets.model;
 
-import java.util.List;
-
+/**
+ * Tag class
+ */
 public class Tag {
+  /**
+   * The UUID of the tag.
+   */
+  private String UUID;
+  
+  /**
+   * The name of the tag.
+   */
   private String name;
-  private List<CodeSnippet> codeSnippets;
 
   public Tag() {
     this(null);
@@ -12,11 +20,6 @@ public class Tag {
 
   public Tag(String name) {
     this.name = name;
-  }
-
-  public Tag(String name, List<CodeSnippet> codeSnippets) {
-    this.name = name;
-    this.codeSnippets = codeSnippets;
   }
 
   public String getName() {
@@ -27,11 +30,11 @@ public class Tag {
     this.name = name;
   }
 
-  public List<CodeSnippet> getCodeSnippets() {
-    return codeSnippets;
+  public String getUUID() {
+    return UUID;
   }
 
-  public void setCodeSnippets(List<CodeSnippet> codeSnippets) {
-    this.codeSnippets = codeSnippets;
+  public void setUUID(String UUID) {
+    this.UUID = UUID;
   }
 }

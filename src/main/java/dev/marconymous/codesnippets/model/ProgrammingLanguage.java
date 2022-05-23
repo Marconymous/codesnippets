@@ -1,14 +1,32 @@
 package dev.marconymous.codesnippets.model;
 
-import java.util.List;
-
+/**
+ * Class Representing a Programming Language
+ */
 public class ProgrammingLanguage {
+
+  /**
+   * The UUID of the Programming Language
+   */
+  private String UUID;
+
+  /**
+   * The name of the Programming Language
+   */
   private String name;
-  private List<CodeSnippet> codeSnippets;
+
+  /**
+   * Description of the Programming Language
+   */
   private String description;
+
+  /**
+   * The URL for the image of the Programming Language
+   */
   private String imageUrl;
 
   public ProgrammingLanguage() {
+    this(null, null, null);
   }
 
   public ProgrammingLanguage(String name, String description, String imageUrl) {
@@ -25,14 +43,6 @@ public class ProgrammingLanguage {
     this.name = name;
   }
 
-  public List<CodeSnippet> getCodeSnippets() {
-    return codeSnippets;
-  }
-
-  public void setCodeSnippets(List<CodeSnippet> codeSnippets) {
-    this.codeSnippets = codeSnippets;
-  }
-
   public String getDescription() {
     return description;
   }
@@ -47,5 +57,13 @@ public class ProgrammingLanguage {
 
   public void setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
+  }
+
+  public String getUUID() {
+    return UUID;
+  }
+
+  public void setUUID(String UUID) {
+    this.UUID = UUID;
   }
 }
