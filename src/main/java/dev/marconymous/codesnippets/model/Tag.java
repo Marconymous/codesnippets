@@ -8,7 +8,7 @@ public class Tag {
    * The UUID of the tag.
    */
   private String UUID;
-  
+
   /**
    * The name of the tag.
    */

@@ -8,8 +8,17 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+/**
+ * Service for code snippets.
+ */
 @Path("/snippet")
 public class CodeSnippetService extends CRUDService {
+
+  /**
+   * Reads all code snippets.
+   *
+   * @return Response with all code snippets.
+   */
   @GET
   @Path("/all")
   @Override
@@ -18,6 +27,12 @@ public class CodeSnippetService extends CRUDService {
     return generateResponseForGET(DataHandler.getCodeSnippetList());
   }
 
+  /**
+   * Reads a code snippet by id.
+   *
+   * @param uuid UUID of the code snippet.
+   * @return Response with the code snippet.
+   */
   @Override
   @GET
   @Produces(MediaType.APPLICATION_JSON)

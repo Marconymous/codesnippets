@@ -5,9 +5,6 @@ import jakarta.ws.rs.core.Application;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 @ApplicationPath("/api")
