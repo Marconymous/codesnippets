@@ -12,6 +12,10 @@ import java.util.Date;
 import java.util.UUID;
 
 public class JSONFileGenerator {
+  /**
+   * Generates a JSON file with a single code snippet.
+   * @param args The arguments.
+   */
   public static void main(String[] args) {
     ProgrammingLanguage[] languages = {
         new ProgrammingLanguage("Java", "Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible.", "img/java.jpg"),
