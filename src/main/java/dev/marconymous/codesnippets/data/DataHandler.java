@@ -5,6 +5,8 @@ import dev.marconymous.codesnippets.Config;
 import dev.marconymous.codesnippets.model.CodeSnippet;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
 import dev.marconymous.codesnippets.model.Tag;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,17 +22,27 @@ public class DataHandler {
   /**
    * List of all programming languages
    */
+  @Getter
+  @Setter
   private static List<ProgrammingLanguage> languageList;
 
   /**
    * List of all Code Snippets
    */
+  @Getter
+  @Setter
   private static List<CodeSnippet> codeSnippetList;
 
   /**
    * List of all Tags
    */
+  @Getter
+  @Setter
   private static List<Tag> tagList;
+
+  private static final String LANGUAGE_FILE = Config.getProperty("languages.path");
+  private static final String TAGS_FILE = Config.getProperty("tags.path");
+  private static final String SNIPPETS_FILE = Config.getProperty("snippets.path");
 
   static {
     readLanguageFile();
@@ -49,7 +61,7 @@ public class DataHandler {
    * Reads all Tags from the JSON-file
    */
   private static void readTagFile() {
-    var data = readFileToList(Config.getProperty("tags.path"), Tag[].class);
+    var data = readFileToList(TAGS_FILE, Tag[].class);
     setTagList(data);
   }
 
@@ -57,7 +69,7 @@ public class DataHandler {
    * Reads all Code Snippets from the JSON-file
    */
   private static void readCodeSnippetFile() {
-    var data = readFileToList(Config.getProperty("snippets.path"), CodeSnippet[].class);
+    var data = readFileToList(SNIPPETS_FILE, CodeSnippet[].class);
     setCodeSnippetList(data);
   }
 
@@ -65,7 +77,7 @@ public class DataHandler {
    * Reads all programming languages from the JSON-file
    */
   private static void readLanguageFile() {
-    var data = readFileToList(Config.getProperty("languages.path"), ProgrammingLanguage[].class);
+    var data = readFileToList(LANGUAGE_FILE, ProgrammingLanguage[].class);
     setLanguageList(data);
   }
 
@@ -92,58 +104,25 @@ public class DataHandler {
     return null;
   }
 
-  /**
-   * Returns a list of all programming languages
-   *
-   * @return a list of all programming languages
-   */
-  public static List<ProgrammingLanguage> getLanguageList() {
-    return languageList;
+  public static void saveCodeSnippetFile() {
+    writeFileToList(SNIPPETS_FILE, getCodeSnippetList());
   }
 
-  /**
-   * Setter for Language List
-   *
-   * @param languageList the new language list
-   */
-  private static void setLanguageList(List<ProgrammingLanguage> languageList) {
-    DataHandler.languageList = languageList;
+  public static void saveTagFile() {
+    writeFileToList(TAGS_FILE, getTagList());
   }
 
-  /**
-   * Getter for Code Snippet List
-   *
-   * @return a list of all Code Snippets
-   */
-  public static List<CodeSnippet> getCodeSnippetList() {
-    return codeSnippetList;
+  public static void saveLanguageFile() {
+    writeFileToList(LANGUAGE_FILE, getLanguageList());
   }
 
-  /**
-   * Setter for Code Snippet List
-   *
-   * @param codeSnippetList the new Code Snippet List
-   */
-  private static void setCodeSnippetList(List<CodeSnippet> codeSnippetList) {
-    DataHandler.codeSnippetList = codeSnippetList;
-  }
-
-  /**
-   * Getter for Tag List
-   *
-   * @return a list of all Tags
-   */
-  public static List<Tag> getTagList() {
-    return tagList;
-  }
-
-  /**
-   * Setter for Tag List
-   *
-   * @param tagList the new Tag List
-   */
-  private static void setTagList(List<Tag> tagList) {
-    DataHandler.tagList = tagList;
+  private static <T> void writeFileToList(String path, List<T> data) {
+    try {
+      ObjectMapper objectMapper = new ObjectMapper();
+      objectMapper.writeValue(Paths.get(path).toFile(), data);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -174,5 +153,35 @@ public class DataHandler {
    */
   public static Tag getTagByUUID(String uuid) {
     return tagList.stream().filter(tag -> tag.getUUID().equals(uuid)).findFirst().orElse(null);
+  }
+
+  public void addCodeSnippet(CodeSnippet codeSnippet) {
+    codeSnippetList.add(codeSnippet);
+    saveCodeSnippetFile();
+  }
+
+  public static void addLanguage(ProgrammingLanguage language) {
+    languageList.add(language);
+    saveLanguageFile();
+  }
+
+  public static void addTag(Tag tag) {
+    tagList.add(tag);
+    saveTagFile();
+  }
+
+  public static void removeCodeSnippet(CodeSnippet codeSnippet) {
+    codeSnippetList.remove(codeSnippet);
+    saveCodeSnippetFile();
+  }
+
+  public static void removeLanguage(ProgrammingLanguage language) {
+    languageList.remove(language);
+    saveLanguageFile();
+  }
+
+  public static void removeTag(Tag tag) {
+    tagList.remove(tag);
+    saveTagFile();
   }
 }

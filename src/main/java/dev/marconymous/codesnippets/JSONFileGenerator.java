@@ -7,56 +7,42 @@ import dev.marconymous.codesnippets.model.Tag;
 import dev.marconymous.codesnippets.model.Visibility;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
+
+import static java.nio.file.Paths.get;
 
 public class JSONFileGenerator {
+  public static ProgrammingLanguage[] languages = {
+    new ProgrammingLanguage("c2c79790-814c-43bf-ac32-782709fb2c98", "Java", "Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible.", "img/java.jpg"),
+    new ProgrammingLanguage("6dcfb985-4693-4b44-8269-5ef41a59da20", "Python", "Python is an interpreted, high-level, general-purpose programming language.", "img/python.jpg"),
+    new ProgrammingLanguage("31098c72-7071-4c56-a723-59c13165c12d", "Kotlin", "Kotlin is a general-purpose, statically typed, compiled, and extensible programming language.", "img/kotlin.jpg")
+  };
+
+  public static Tag[] tags = {
+    new Tag("4c643935-f395-431b-bff8-8a76fc2050b5", "for-loop"),
+    new Tag("b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4", "if-statement"),
+    new Tag("bca68468-d7bc-4379-8574-147cab92b29a", "while-loop")
+  };
+
+  public static CodeSnippet[] snippets = {
+    new CodeSnippet("d9212ce9-09b5-4e22-8820-3d319047b318", "Java For Loop", "for (int i = 0; i < 10; i++) {\nSystem.out.println(i);\n}", new Date(), List.of(tags[0]), Visibility.PUBLIC, null, languages[0]),
+    new CodeSnippet("8f694d07-436c-4fbe-b077-b968072f32dd", "Python If Statement", "if (x < 0):\nprint('x is smaller than 0')", new Date(), List.of(tags[0]), Visibility.PUBLIC, null, languages[1]),
+    new CodeSnippet("52abdb76-36dd-4c58-862c-2bebc3bcf1dd", "Kotlin While Loop", "while (x < 10) {\nprintln(x)\nx++\n}", new Date(), List.of(tags[0]), Visibility.PUBLIC, null, languages[2])
+  };
+
   /**
    * Generates a JSON file with a single code snippet.
    *
    * @param args The arguments.
    */
   public static void main(String[] args) {
-    ProgrammingLanguage[] languages = {
-      new ProgrammingLanguage("Java", "Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible.", "img/java.jpg"),
-      new ProgrammingLanguage("Python", "Python is an interpreted, high-level, general-purpose programming language.", "img/python.jpg"),
-      new ProgrammingLanguage("Kotlin", "Kotlin is a general-purpose, statically typed, compiled, and extensible programming language.", "img/kotlin.jpg")
-    };
-
-    Tag[] tags = {
-      new Tag("for-loop"),
-      new Tag("if-statement"),
-      new Tag("while-loop")
-    };
-
-    CodeSnippet[] snippets = {
-      new CodeSnippet("Java For Loop", "for (int i = 0; i < 10; i++) {\nSystem.out.println(i);\n}", new Date(), Visibility.PUBLIC, null, languages[0]),
-      new CodeSnippet("Python If Statement", "if (x < 0):\nprint('x is smaller than 0')", new Date(), Visibility.PUBLIC, null, languages[1]),
-      new CodeSnippet("Kotlin While Loop", "while (x < 10) {\nprintln(x)\nx++\n}", new Date(), Visibility.PUBLIC, null, languages[2])
-    };
-
-    for (var cs : snippets) {
-      cs.setUUID(UUID.randomUUID().toString());
-    }
-
-    for (var t : tags) {
-      t.setUUID(UUID.randomUUID().toString());
-    }
-
-    for (var l : languages) {
-      l.setUUID(UUID.randomUUID().toString());
-    }
-
-    for (int i = 0; i < tags.length; i++) {
-      snippets[i].addTag(tags[i]);
-    }
 
     ObjectMapper om = new ObjectMapper();
     try {
-      om.writeValue(Paths.get("/home/marconymous/git/codesnippets/src/main/resources/snippets.json").toFile(), snippets);
-      om.writeValue(Paths.get("/home/marconymous/git/codesnippets/src/main/resources/languages.json").toFile(), languages);
-      om.writeValue(Paths.get("/home/marconymous/git/codesnippets/src/main/resources/tags.json").toFile(), tags);
+      om.writeValue(get("/home/marconymous/git/codesnippets/src/main/resources/snippets.json").toFile(), snippets);
+      om.writeValue(get("/home/marconymous/git/codesnippets/src/main/resources/languages.json").toFile(), languages);
+      om.writeValue(get("/home/marconymous/git/codesnippets/src/main/resources/tags.json").toFile(), tags);
     } catch (IOException e) {
       e.printStackTrace();
     }

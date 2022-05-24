@@ -3,6 +3,9 @@ package dev.marconymous.codesnippets.services;
 import dev.marconymous.codesnippets.Config;
 import jakarta.ws.rs.core.Response;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Class to implement CRUD operations.
  */
