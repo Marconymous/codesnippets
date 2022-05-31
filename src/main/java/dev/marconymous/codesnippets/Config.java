@@ -9,7 +9,7 @@ import java.util.Properties;
 
 @ApplicationPath("/api")
 public class Config extends Application {
-  private static final String PROPERTIES_PATH = "/home/marconymous/git/codesnippets/src/main/resources/.properties";
+  private static final String PROPERTIES_PATH = "C:\\Users\\marcf\\IdeaProjects\\codesnippets\\src\\main\\resources\\.properties";
   private static Properties properties = null;
 
   /**

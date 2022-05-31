@@ -1,8 +1,6 @@
 package dev.marconymous.codesnippets.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import dev.marconymous.codesnippets.annotations.ValidUUID;
 
 /**
  * Class Representing a Programming Language
@@ -15,6 +13,7 @@ public class ProgrammingLanguage {
   /**
    * The UUID of the Programming Language
    */
+  @ValidUUID
   private String UUID;
 
   /**
