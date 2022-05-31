@@ -66,7 +66,7 @@ public abstract class CRUDService {
    * @return Response with data.
    */
   private Response generateResponseForGET(Object data, String uuid, boolean checkUUID) {
-    if (uuidIsInvalid(uuid) && checkUUID || data == null) {
+    if ((uuidIsInvalid(uuid) || data == null) && checkUUID) {
       throw new IllegalArgumentException("Invalid UUID: " + uuid);
     }
 
