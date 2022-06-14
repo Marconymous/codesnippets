@@ -1,18 +1,25 @@
-package dev.marconymous.codesnippets;
+package dev.marconymous.codesnippets.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.marconymous.codesnippets.Config;
 import dev.marconymous.codesnippets.model.CodeSnippet;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
 import dev.marconymous.codesnippets.model.Tag;
 import dev.marconymous.codesnippets.model.Visibility;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Response;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import static dev.marconymous.codesnippets.Config.getProperty;
 import static java.nio.file.Paths.get;
 
-public class JSONFileGenerator {
+@Path("restore")
+public class RestorationService {
   public static ProgrammingLanguage[] languages = {
     new ProgrammingLanguage("c2c79790-814c-43bf-ac32-782709fb2c98", "Java", "Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible.", "img/java.jpg"),
     new ProgrammingLanguage("6dcfb985-4693-4b44-8269-5ef41a59da20", "Python", "Python is an interpreted, high-level, general-purpose programming language.", "img/python.jpg"),
@@ -31,20 +38,21 @@ public class JSONFileGenerator {
     new CodeSnippet("52abdb76-36dd-4c58-862c-2bebc3bcf1dd", "Kotlin While Loop", "while (x < 10) {\nprintln(x)\nx++\n}", new Date(), List.of(tags[0]), Visibility.PUBLIC, null, languages[2])
   };
 
-  /**
-   * Generates a JSON file with a single code snippet.
-   *
-   * @param args The arguments.
-   */
-  public static void main(String[] args) {
+  @GET
+  public Response restore(@QueryParam("pwd") String password) {
+    if (!password.equals("reset-all")) {
+      return Response.status(Response.Status.BAD_REQUEST).entity("Wrong Password!").build();
+    }
 
     ObjectMapper om = new ObjectMapper();
     try {
-      om.writeValue(get("/home/marconymous/git/codesnippets/src/main/resources/snippets.json").toFile(), snippets);
-      om.writeValue(get("/home/marconymous/git/codesnippets/src/main/resources/languages.json").toFile(), languages);
-      om.writeValue(get("/home/marconymous/git/codesnippets/src/main/resources/tags.json").toFile(), tags);
+      om.writeValue(get(getProperty("snippets.path")).toFile(), snippets);
+      om.writeValue(get(getProperty("languages.path")).toFile(), languages);
+      om.writeValue(get(getProperty("tags.path")).toFile(), tags);
     } catch (IOException e) {
       e.printStackTrace();
     }
+
+    return Response.ok().entity("Data has been reset!").build();
   }
 }

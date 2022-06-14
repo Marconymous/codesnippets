@@ -1,21 +1,19 @@
 package dev.marconymous.codesnippets.services;
 
-import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.util.UUID;
-
-import static dev.marconymous.codesnippets.Utils.*;
+import static dev.marconymous.codesnippets.Utils.anyIsNull;
 
 /**
  * Service for programming languages.
  */
 @Path("/language")
-public class ProgrammingLanguageService extends CRUDService {
+public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage> {
   /**
    * Lists all programming languages.
    *
@@ -44,22 +42,17 @@ public class ProgrammingLanguageService extends CRUDService {
 
   @POST
   @Produces(MediaType.TEXT_PLAIN)
+  @Override
   public Response create(
-    @FormParam("name") String name,
-    @FormParam("description") String description,
-    @FormParam("imageUrl") String imageUrl
+    @Valid @BeanParam ProgrammingLanguage language
   ) {
-    if(anyIsNull(name, description, imageUrl))
-      return Response.status(Response.Status.BAD_REQUEST).entity("At least one Argument is missing").build();
-
-
-    var pl = new ProgrammingLanguage(UUID.randomUUID().toString(), name, description, imageUrl);
-    DataHandler.addLanguage(pl);
+    DataHandler.addLanguage(language);
     return Response.ok().entity("").build();
   }
 
   @DELETE
   @Produces(MediaType.TEXT_PLAIN)
+  @Override
   public Response delete(
     @QueryParam("uuid") String uuid
   ) {
@@ -72,24 +65,22 @@ public class ProgrammingLanguageService extends CRUDService {
 
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
+  @Override
   public Response update(
-    @FormParam("uuid") String uuid,
-    @FormParam("name") String name,
-    @FormParam("description") String description,
-    @FormParam("imageUrl") String imageUrl
+    @Valid @BeanParam ProgrammingLanguage language
   ) {
-    var pl = DataHandler.getLanguageByUUID(uuid);
+    var pl = DataHandler.getLanguageByUUID(language.getUUID());
 
-    if (allAreNull(name, description, imageUrl) || uuid == null) {
-      return Response.status(Response.Status.BAD_REQUEST).entity("UUID or at lease one argument is missing").build();
-    }
-
-    executeIfNotNull(name, () -> pl.setName(name));
-    executeIfNotNull(description, () -> pl.setDescription(description));
-    executeIfNotNull(imageUrl, () -> pl.setImageUrl(imageUrl));
+    copyAttributes(language, pl);
 
     DataHandler.saveLanguageFile();
 
     return Response.ok().entity("").build();
+  }
+
+  private void copyAttributes(ProgrammingLanguage copyFrom, ProgrammingLanguage copyTo) {
+    copyTo.setDescription(copyFrom.getDescription());
+    copyTo.setName(copyFrom.getName());
+    copyTo.setImageUrl(copyFrom.getImageUrl());
   }
 }

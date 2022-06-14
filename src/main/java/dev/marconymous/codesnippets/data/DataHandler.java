@@ -155,7 +155,7 @@ public class DataHandler {
     return tagList.stream().filter(tag -> tag.getUUID().equals(uuid)).findFirst().orElse(null);
   }
 
-  public void addCodeSnippet(CodeSnippet codeSnippet) {
+  public static void addCodeSnippet(CodeSnippet codeSnippet) {
     codeSnippetList.add(codeSnippet);
     saveCodeSnippetFile();
   }

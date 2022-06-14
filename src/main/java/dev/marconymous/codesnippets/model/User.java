@@ -1,6 +1,5 @@
 package dev.marconymous.codesnippets.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**

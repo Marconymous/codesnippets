@@ -1,6 +1,7 @@
 package dev.marconymous.codesnippets.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.marconymous.codesnippets.annotations.UUIDValidOrNull;
 import dev.marconymous.codesnippets.data.DataHandler;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
@@ -23,6 +24,7 @@ public class CodeSnippet {
   /**
    * The id of the code snippet.
    */
+  @UUIDValidOrNull
   private String UUID;
 
   /**

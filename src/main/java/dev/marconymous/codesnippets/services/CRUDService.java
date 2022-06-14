@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Class to implement CRUD operations.
  */
-public abstract class CRUDService {
+public abstract class CRUDService<T> {
   protected final String UUID_REGEX = Config.getProperty("uuid.regexp");
 
   /**
@@ -28,6 +28,30 @@ public abstract class CRUDService {
    */
   @SuppressWarnings("unused")
   public abstract Response getSingle(String uuid);
+
+  /**
+   * Create item.
+   *
+   * @param obj Object to create.
+   * @return Response for creation.
+   */
+  public abstract Response create(T obj);
+
+  /**
+   * Update item.
+   *
+   * @param obj Object to update.
+   * @return Response for update.
+   */
+  public abstract Response update(T obj);
+
+  /**
+   * Delete item by UUID.
+   *
+   * @param uuid UUID of item.
+   * @return Response for deletion.
+   */
+  public abstract Response delete(String uuid);
 
   /**
    * Check if UUID is valid.
