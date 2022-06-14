@@ -48,7 +48,6 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
    * @param obj Object to create.
    * @return Response status code 200 if successful.
    */
-  @Override
   @POST
   @Produces(MediaType.TEXT_PLAIN)
   public Response create(
@@ -67,7 +66,6 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
    */
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
-  @Override
   public Response update(
     @Valid @BeanParam CodeSnippet obj
   ) {

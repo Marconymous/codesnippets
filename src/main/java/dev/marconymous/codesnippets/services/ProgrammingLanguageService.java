@@ -42,7 +42,6 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
 
   @POST
   @Produces(MediaType.TEXT_PLAIN)
-  @Override
   public Response create(
     @Valid @BeanParam ProgrammingLanguage language
   ) {
@@ -65,7 +64,6 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
 
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
-  @Override
   public Response update(
     @Valid @BeanParam ProgrammingLanguage language
   ) {

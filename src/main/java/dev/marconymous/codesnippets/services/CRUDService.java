@@ -1,6 +1,7 @@
 package dev.marconymous.codesnippets.services;
 
 import dev.marconymous.codesnippets.Config;
+import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import jakarta.ws.rs.core.Response;
 
 import java.util.Arrays;
@@ -30,28 +31,12 @@ public abstract class CRUDService<T> {
   public abstract Response getSingle(String uuid);
 
   /**
-   * Create item.
-   *
-   * @param obj Object to create.
-   * @return Response for creation.
-   */
-  public abstract Response create(T obj);
-
-  /**
-   * Update item.
-   *
-   * @param obj Object to update.
-   * @return Response for update.
-   */
-  public abstract Response update(T obj);
-
-  /**
    * Delete item by UUID.
    *
    * @param uuid UUID of item.
    * @return Response for deletion.
    */
-  public abstract Response delete(String uuid);
+  public abstract Response delete(@UUIDValidNotNull String uuid);
 
   /**
    * Check if UUID is valid.
