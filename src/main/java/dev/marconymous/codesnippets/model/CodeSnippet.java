@@ -1,10 +1,14 @@
 package dev.marconymous.codesnippets.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import dev.marconymous.codesnippets.annotations.UUIDValidOrNull;
 import dev.marconymous.codesnippets.data.DataHandler;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.ws.rs.FormParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,21 +29,29 @@ public class CodeSnippet {
    * The id of the code snippet.
    */
   @UUIDValidOrNull
+  @FormParam("uuid")
   private String UUID;
 
   /**
    * The title of the code snippet.
    */
+  @NotNull
+  @NotBlank
+  @FormParam("title")
   private String title;
 
   /**
    * The Content of the code snippet.
    */
+  @NotNull
+  @NotBlank
+  @FormParam("content")
   private String content;
 
   /**
    * The date the code snippet was created.
    */
+  @JsonIgnore
   private Date creationDate;
 
   /**
@@ -53,6 +65,8 @@ public class CodeSnippet {
   /**
    * The visibility of the code snippet.
    */
+  @FormParam("visibility")
+  @NotNull
   private Visibility visibility;
 
   /**
@@ -64,7 +78,6 @@ public class CodeSnippet {
    * The Language for which this snippet is
    */
   @JsonIgnore
-  @JsonbTransient
   private ProgrammingLanguage programmingLanguage;
 
 
@@ -74,7 +87,12 @@ public class CodeSnippet {
   }
 
   @SuppressWarnings("unused")
+  @FormParam("programmingLanguageUUID")
   public void setProgrammingLanguageUUID(String programmingLanguageUUID) {
+    if (!new UUIDValidNotNull.Validator().isValid(programmingLanguageUUID, null)) {
+      throw new IllegalArgumentException("programmingLanguageUUID is not valid or null");
+    }
+
     this.programmingLanguage = DataHandler.getLanguageByUUID(programmingLanguageUUID);
   }
 
@@ -90,6 +108,21 @@ public class CodeSnippet {
     for (String tagUUID : tagUUIDs) {
       var tag = DataHandler.getTagByUUID(tagUUID);
       tags.add(tag);
+    }
+  }
+
+  @SuppressWarnings("unused")
+  @FormParam("tagUUIDs")
+  public void serviceTagUUID(String tagUUIDs) {
+    if (tagUUIDs == null) {
+      return;
+    }
+    var tags = tagUUIDs.split(",");
+
+    this.tags = new ArrayList<>();
+    for (String tagUUID : tags) {
+      var tag = DataHandler.getTagByUUID(tagUUID);
+      this.tags.add(tag);
     }
   }
 }

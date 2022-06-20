@@ -1,5 +1,6 @@
 package dev.marconymous.codesnippets.services;
 
+import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
 import jakarta.validation.Valid;
@@ -46,7 +47,7 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
     @Valid @BeanParam ProgrammingLanguage language
   ) {
     DataHandler.addLanguage(language);
-    return Response.ok().entity("").build();
+    return Response.ok().entity("Language Created").build();
   }
 
   @DELETE
@@ -59,7 +60,7 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
       return Response.status(Response.Status.BAD_REQUEST).entity("uuid is not defined").build();
 
     DataHandler.removeLanguage(DataHandler.getLanguageByUUID(uuid));
-    return Response.ok().entity("").build();
+    return Response.ok().entity("Language deleted!").build();
   }
 
   @PUT
@@ -67,13 +68,17 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
   public Response update(
     @Valid @BeanParam ProgrammingLanguage language
   ) {
+    if (!new UUIDValidNotNull.Validator().isValid(language.getUUID(), null))
+      return Response.status(Response.Status.BAD_REQUEST).entity("uuid is not defined/not valid").build();
+
+    System.out.println("Updating language " + language.getUUID());
     var pl = DataHandler.getLanguageByUUID(language.getUUID());
 
     copyAttributes(language, pl);
 
     DataHandler.saveLanguageFile();
 
-    return Response.ok().entity("").build();
+    return Response.ok().entity("Language updated!").build();
   }
 
   private void copyAttributes(ProgrammingLanguage copyFrom, ProgrammingLanguage copyTo) {

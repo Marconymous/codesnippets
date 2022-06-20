@@ -27,7 +27,6 @@ public class Tag {
   /**
    * The name of the tag.
    */
-  @Size(min = 1, max = 25)
   @NotBlank
   @NotNull
   @FormParam("name")

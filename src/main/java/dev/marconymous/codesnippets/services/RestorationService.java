@@ -2,6 +2,7 @@ package dev.marconymous.codesnippets.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.marconymous.codesnippets.Config;
+import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.CodeSnippet;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
 import dev.marconymous.codesnippets.model.Tag;
@@ -49,6 +50,8 @@ public class RestorationService {
       om.writeValue(get(getProperty("snippets.path")).toFile(), snippets);
       om.writeValue(get(getProperty("languages.path")).toFile(), languages);
       om.writeValue(get(getProperty("tags.path")).toFile(), tags);
+
+      DataHandler.reset();
     } catch (IOException e) {
       e.printStackTrace();
     }

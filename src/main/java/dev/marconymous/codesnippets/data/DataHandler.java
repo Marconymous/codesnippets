@@ -184,4 +184,10 @@ public class DataHandler {
     tagList.remove(tag);
     saveTagFile();
   }
+
+  public static void reset() {
+    readLanguageFile();
+    readTagFile();
+    readCodeSnippetFile();
+  }
 }

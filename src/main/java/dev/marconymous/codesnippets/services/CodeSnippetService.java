@@ -1,5 +1,6 @@
 package dev.marconymous.codesnippets.services;
 
+import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.CodeSnippet;
@@ -53,6 +54,8 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   public Response create(
     @Valid @BeanParam CodeSnippet obj
   ) {
+    obj.setUUID(Utils.UUIDString());
+
     DataHandler.addCodeSnippet(obj);
 
     return Response.ok().entity("CodeSnippet created").build();
@@ -69,10 +72,17 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   public Response update(
     @Valid @BeanParam CodeSnippet obj
   ) {
+    if (!new UUIDValidNotNull.Validator().isValid(obj.getUUID(), null)) {
+      return Response.status(Response.Status.BAD_REQUEST).entity("UUID is not valid").build();
+    }
+
+
     var old = DataHandler.getCodeSnippetByUUID(obj.getUUID());
 
     copyAttributes(obj, old);
-    return null;
+
+    DataHandler.saveCodeSnippetFile();
+    return Response.ok().entity("CodeSnippet updated").build();
   }
 
   private void copyAttributes(CodeSnippet upd, CodeSnippet old) {
@@ -86,7 +96,7 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   @DELETE
   @Produces(MediaType.TEXT_PLAIN)
   @Override
-  public Response delete(@UUIDValidNotNull String uuid) {
+  public Response delete(@UUIDValidNotNull @QueryParam("uuid") String uuid) {
     var data = DataHandler.getCodeSnippetByUUID(uuid);
     DataHandler.removeCodeSnippet(data);
 

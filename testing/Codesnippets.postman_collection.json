@@ -10,110 +10,910 @@
 			"name": "CodeSnippets",
 			"item": [
 				{
-					"name": "Read All Codesnippets",
-					"event": [
+					"name": "Create",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", () => {",
-									"        pm.response.to.have.status(200);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/snippet/all",
-							"host": [
-								"{{API-URL}}"
+							"name": "Create CodeSnippet All Params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"path": [
-								"snippet",
-								"all"
-							]
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "[Postman Test] Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "pm.test(\"Status code is 400\", () => {pm.response.to.have.status(400);}}",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PRIVATE",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create CodeSnippet No TagUUIDs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "[Postman Test] Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "pm.test(\"Status code is 400\", () => {pm.response.to.have.status(400);}}",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PRIVATE",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create CodeSnippet No Visibility",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "[Postman Test] Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "pm.test(\"Status code is 400\", () => {pm.response.to.have.status(400);}}",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create CodeSnippet No Programming Language UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", () => {\r",
+											"        pm.response.to.have.status(500);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "[Postman Test] Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "pm.test(\"Status code is 400\", () => {pm.response.to.have.status(400);}}",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PRIVATE",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create CodeSnippet No Content",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "[Postman Test] Title",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PRIVATE",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create CodeSnippet No Title",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "content",
+											"value": "pm.test(\"Status code is 400\", () => {pm.response.to.have.status(400);}}",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PRIVATE",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Read Single CodeSnippet (Correct UUID)",
-					"event": [
+					"name": "Read",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", () => {",
-									"        pm.response.to.have.status(200);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/snippet?uuid=d9212ce9-09b5-4e22-8820-3d319047b318",
-							"host": [
-								"{{API-URL}}"
-							],
-							"path": [
-								"snippet"
-							],
-							"query": [
+							"name": "Read All Codesnippets",
+							"event": [
 								{
-									"key": "uuid",
-									"value": "d9212ce9-09b5-4e22-8820-3d319047b318"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/snippet/all",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Single CodeSnippet (Incorrect UUID)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", () => {",
+											"        pm.response.to.have.status(500);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/snippet?uuid=none",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "none"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Single CodeSnippet (Correct UUID)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/snippet?uuid=d9212ce9-09b5-4e22-8820-3d319047b318",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "d9212ce9-09b5-4e22-8820-3d319047b318"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Read Single CodeSnippet (Incorrect UUID)",
-					"event": [
+					"name": "Update",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 500\", () => {",
-									"        pm.response.to.have.status(500);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/snippet?uuid=none",
-							"host": [
-								"{{API-URL}}"
-							],
-							"path": [
-								"snippet"
-							],
-							"query": [
+							"name": "Update CodeSnippet All Prarams",
+							"event": [
 								{
-									"key": "uuid",
-									"value": "none"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "8f694d07-436c-4fbe-b077-b968072f32dd",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "[Postman Test] new Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "new content",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PUBLIC",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update CodeSnippet No UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "[Postman Test] new Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "new content",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PUBLIC",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update CodeSnippet No Title",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "8f694d07-436c-4fbe-b077-b968072f32dd",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "new content",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PUBLIC",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update CodeSnippet No Content",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "8f694d07-436c-4fbe-b077-b968072f32dd",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "[Postman Test] new Title",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PUBLIC",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update CodeSnippet No Visibility",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "8f694d07-436c-4fbe-b077-b968072f32dd",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "[Postman Test] new Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "new content",
+											"type": "text"
+										},
+										{
+											"key": "programmingLanguageUUID",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update CodeSnippet No ProgrammingLanguage UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", () => {\r",
+											"        pm.response.to.have.status(500);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "8f694d07-436c-4fbe-b077-b968072f32dd",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "[Postman Test] new Title",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "new content",
+											"type": "text"
+										},
+										{
+											"key": "visibility",
+											"value": "PUBLIC",
+											"type": "text"
+										},
+										{
+											"key": "tagUUIDs",
+											"value": "4c643935-f395-431b-bff8-8a76fc2050b5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Delete Codesnippet With UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/snippet?uuid=52abdb76-36dd-4c58-862c-2bebc3bcf1dd",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "52abdb76-36dd-4c58-862c-2bebc3bcf1dd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Codesnippet No UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/snippet",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"snippet"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -121,110 +921,423 @@
 			"name": "Tags",
 			"item": [
 				{
-					"name": "Read All Tags",
-					"event": [
+					"name": "Create",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", () => {",
-									"        pm.response.to.have.status(200);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/tag/all",
-							"host": [
-								"{{API-URL}}"
+							"name": "Create Tag Wrong Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    }\r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"path": [
-								"tag",
-								"all"
-							]
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/tag",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Tag all Params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "[Postman] Test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/tag",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Read Single Tag (Correct UUID)",
-					"event": [
+					"name": "Read",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", () => {",
-									"        pm.response.to.have.status(200);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/tag?uuid=4c643935-f395-431b-bff8-8a76fc2050b5",
-							"host": [
-								"{{API-URL}}"
-							],
-							"path": [
-								"tag"
-							],
-							"query": [
+							"name": "Read Single Tag (Correct UUID)",
+							"event": [
 								{
-									"key": "uuid",
-									"value": "4c643935-f395-431b-bff8-8a76fc2050b5"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/tag?uuid=b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read All Tags",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/tag/all",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Single Tag (Incorrect UUID)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", () => {",
+											"        pm.response.to.have.status(500);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/tag?uuid=none",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "none"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Read Single Tag (Incorrect UUID)",
-					"event": [
+					"name": "Update",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 500\", () => {",
-									"        pm.response.to.have.status(500);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/tag?uuid=none",
-							"host": [
-								"{{API-URL}}"
-							],
-							"path": [
-								"tag"
-							],
-							"query": [
+							"name": "Update Tag All Params",
+							"event": [
 								{
-									"key": "uuid",
-									"value": "none"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "new if-statement",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/tag",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Tag All Params No UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "new if-statement",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/tag",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Tag All Params No Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/tag",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Delete Tag",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/tag?uuid=bca68468-d7bc-4379-8574-147cab92b29a",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "bca68468-d7bc-4379-8574-147cab92b29a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Tag no UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{API-URL}}/tag",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"tag"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -232,112 +1345,676 @@
 			"name": "Programming Language",
 			"item": [
 				{
-					"name": "Read All Languages",
-					"event": [
+					"name": "Create",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", () => {",
-									"        pm.response.to.have.status(200);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/language/all",
-							"host": [
-								"{{API-URL}}"
+							"name": "Create Language (All Parameters)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"path": [
-								"language",
-								"all"
-							]
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Scala",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Krzysztof like it very much",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "img/Scala.png",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Language No Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"        pm.response.to.have.status(400);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "description",
+											"value": "Krzysztof like it very much",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "img/Scala.png",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Language No Description",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"        pm.response.to.have.status(400);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Scala",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "img/Scala.png",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Language No ImageURL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"        pm.response.to.have.status(400);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Scala",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Krzysztof like it very much",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Read Single Language (Correct UUID)",
-					"event": [
+					"name": "Read",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", () => {",
-									"        pm.response.to.have.status(200);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/language?uuid=c2c79790-814c-43bf-ac32-782709fb2c98",
-							"host": [
-								"{{API-URL}}"
-							],
-							"path": [
-								"language"
-							],
-							"query": [
+							"name": "Read All Languages",
+							"event": [
 								{
-									"key": "uuid",
-									"value": "c2c79790-814c-43bf-ac32-782709fb2c98"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/language/all",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Single Language (Correct UUID)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/language?uuid=c2c79790-814c-43bf-ac32-782709fb2c98",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "c2c79790-814c-43bf-ac32-782709fb2c98"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Single Language (Incorrect UUID)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 500\", () => {",
+											"        pm.response.to.have.status(500);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/language?uuid=none",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "none"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Read Single Language (Incorrect UUID)",
-					"event": [
+					"name": "Update",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 500\", () => {",
-									"        pm.response.to.have.status(500);",
-									"    } ",
-									")"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API-URL}}/language?uuid=none",
-							"host": [
-								"{{API-URL}}"
-							],
-							"path": [
-								"language"
-							],
-							"query": [
+							"name": "Update Language",
+							"event": [
 								{
-									"key": "uuid",
-									"value": "none"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {\r",
+											"        pm.response.to.have.status(200);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "6dcfb985-4693-4b44-8269-5ef41a59da20",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "New Python",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "Newest Update to Python",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "New Image Url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Language No UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "New Python",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "Newest Update to Python",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "New Image Url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Language No Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "6dcfb985-4693-4b44-8269-5ef41a59da20",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "Newest Update to Python",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "New Image Url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Language No Image URL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "6dcfb985-4693-4b44-8269-5ef41a59da20",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "New Python",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "New Image Url",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Language No Description",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    } \r",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "uuid",
+											"value": "6dcfb985-4693-4b44-8269-5ef41a59da20",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "New Python",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"value": "Newest Update to Python",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Delete Language with UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"        pm.response.to.have.status(200);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{API-URL}}/language?uuid=31098c72-7071-4c56-a723-59c13165c12d",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									],
+									"query": [
+										{
+											"key": "uuid",
+											"value": "31098c72-7071-4c56-a723-59c13165c12d"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Language without UUID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", () => {",
+											"        pm.response.to.have.status(400);",
+											"    } ",
+											")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API-URL}}/language",
+									"host": [
+										"{{API-URL}}"
+									],
+									"path": [
+										"language"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
+		},
+		{
+			"name": "RESET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API-URL}}/restore?pwd=reset-all",
+					"host": [
+						"{{API-URL}}"
+					],
+					"path": [
+						"restore"
+					],
+					"query": [
+						{
+							"key": "pwd",
+							"value": "reset-all"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [

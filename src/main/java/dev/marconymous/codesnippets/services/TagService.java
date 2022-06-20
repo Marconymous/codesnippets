@@ -10,6 +10,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import javax.xml.crypto.Data;
 import java.util.UUID;
 
 import static dev.marconymous.codesnippets.Utils.UUIDString;
@@ -43,7 +44,7 @@ public class TagService extends CRUDService<Tag> {
   @Override
   public Response getSingle(@QueryParam("uuid") String uuid) {
     var data = DataHandler.getTagByUUID(uuid);
-    return generateResponseForGET(data);
+    return generateResponseForGET(data, uuid);
   }
 
 
@@ -75,8 +76,13 @@ public class TagService extends CRUDService<Tag> {
   public Response update(
     @Valid @BeanParam Tag tag
   ) {
+    if (!new UUIDValidNotNull.Validator().isValid(tag.getUUID(), null))
+      return Response.status(Response.Status.BAD_REQUEST).entity("uuid is not defined/not valid").build();
+
     var old = DataHandler.getTagByUUID(tag.getUUID());
     old.setName(tag.getName());
+
+    DataHandler.saveTagFile();
 
     return Response.ok().entity("Tag updated").build();
   }
