@@ -1,72 +1,117 @@
 {
-	"id": "2a75d343-6a37-4fd6-bbb1-a97b169f0c24",
+	"id": "10c2691c-8b3a-4999-891a-f89fa966f5ac",
 	"name": "Codesnippets",
-	"timestamp": "2022-05-23T16:36:05.797Z",
+	"timestamp": "2022-06-20T19:02:40.198Z",
 	"collection_id": "16371436-3ab909d2-b6bf-47f0-bee6-f99578ad8838",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 9,
+	"totalPass": 41,
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "c97503dd-fc7f-49b1-8706-91ca5b1de9cc",
-			"name": "Read All Codesnippets",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet/all",
-			"time": 19,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				19
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "48272c39-1d9f-4a5e-8174-54baf9a09f45",
-			"name": "Read Single CodeSnippet (Correct UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=d9212ce9-09b5-4e22-8820-3d319047b318",
-			"time": 8,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status code is 200": true
-				}
-			]
-		},
-		{
-			"id": "106944f0-15d0-41fb-975b-e34153872120",
-			"name": "Read Single CodeSnippet (Incorrect UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=none",
+			"id": "9ff6154e-1adf-4d96-a17a-1575ca7a8fef",
+			"name": "RESET",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/restore?pwd=reset-all",
 			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8b4c68c0-8cf9-499d-9bab-6891fbc91209",
+			"name": "Create CodeSnippet All Params",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7f20c23c-9bc7-4ecf-9402-86fc3c436133",
+			"name": "Create CodeSnippet No TagUUIDs",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "aa787195-a089-4ca4-8fa5-962fcf86b0d4",
+			"name": "Create CodeSnippet No Visibility",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "0c27634d-bd61-4a4f-85f1-caec4928a8f0",
+			"name": "Create CodeSnippet No Programming Language UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 7,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
@@ -81,7 +126,7 @@
 				}
 			},
 			"times": [
-				10
+				7
 			],
 			"allTests": [
 				{
@@ -90,10 +135,64 @@
 			]
 		},
 		{
-			"id": "c3e8183b-f26f-469c-bf28-7f34e6c418ba",
-			"name": "Read All Tags",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag/all",
-			"time": 10,
+			"id": "2201e27f-1592-4c1b-ba62-9eda8c673ad5",
+			"name": "Create CodeSnippet No Content",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "f76c2d96-bfaf-43b7-b320-a37afc51b388",
+			"name": "Create CodeSnippet No Title",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "c97503dd-fc7f-49b1-8706-91ca5b1de9cc",
+			"name": "Read All Codesnippets",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet/all",
+			"time": 3,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -108,7 +207,7 @@
 				}
 			},
 			"times": [
-				10
+				3
 			],
 			"allTests": [
 				{
@@ -117,9 +216,225 @@
 			]
 		},
 		{
-			"id": "4d6faf6b-0d4c-46ca-98fd-06227e7ad6d8",
-			"name": "Read Single Tag (Correct UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=4c643935-f395-431b-bff8-8a76fc2050b5",
+			"id": "106944f0-15d0-41fb-975b-e34153872120",
+			"name": "Read Single CodeSnippet (Incorrect UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=none",
+			"time": 4,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 500": true
+			},
+			"testPassFailCounts": {
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 500": true
+				}
+			]
+		},
+		{
+			"id": "48272c39-1d9f-4a5e-8174-54baf9a09f45",
+			"name": "Read Single CodeSnippet (Correct UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=d9212ce9-09b5-4e22-8820-3d319047b318",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d9db9048-7d20-41ce-9751-1d6dd7d1eea9",
+			"name": "Update CodeSnippet All Prarams",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "950d32dc-a3c8-45e2-a2f4-7e2f1fe2e1f4",
+			"name": "Update CodeSnippet No UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "6e816990-eb7f-43dd-9a4c-8ab8344dfc2a",
+			"name": "Update CodeSnippet No Title",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "df4a0cdb-d328-4eeb-854d-dc3bdc207c25",
+			"name": "Update CodeSnippet No Content",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "6224b100-889e-47e1-b13a-ae292e4187cc",
+			"name": "Update CodeSnippet No Visibility",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "d7aadf7e-aa27-446f-af0c-3ad94157f08c",
+			"name": "Update CodeSnippet No ProgrammingLanguage UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 5,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 500": true
+			},
+			"testPassFailCounts": {
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 500": true
+				}
+			]
+		},
+		{
+			"id": "114e82b2-b224-4cbd-9636-bee05692f566",
+			"name": "Delete Codesnippet With UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=52abdb76-36dd-4c58-862c-2bebc3bcf1dd",
 			"time": 6,
 			"responseCode": {
 				"code": 200,
@@ -144,37 +459,64 @@
 			]
 		},
 		{
-			"id": "43a1d0c4-8c2e-49c1-8d12-384fb78f5cb2",
-			"name": "Read Single Tag (Incorrect UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=none",
-			"time": 5,
+			"id": "cda8873b-1506-470b-8a28-1eddd6a46252",
+			"name": "Delete Codesnippet No UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
+			"time": 4,
 			"responseCode": {
-				"code": 500,
-				"name": "Internal Server Error"
+				"code": 400,
+				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 500": true
+				"Status code is 400": true
 			},
 			"testPassFailCounts": {
-				"Status code is 500": {
+				"Status code is 400": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				4
 			],
 			"allTests": [
 				{
-					"Status code is 500": true
+					"Status code is 400": true
 				}
 			]
 		},
 		{
-			"id": "2314c2fd-d763-4ffe-8818-a31e849ab6d4",
-			"name": "Read All Languages",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language/all",
-			"time": 8,
+			"id": "f170207b-8bcd-47ab-ae8b-2afc7edd5fd2",
+			"name": "Create Tag Wrong Name",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "a276ba4a-52e2-4e33-8c5a-d2c41f8c273d",
+			"name": "Create Tag all Params",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
+			"time": 5,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -189,7 +531,358 @@
 				}
 			},
 			"times": [
-				8
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4d6faf6b-0d4c-46ca-98fd-06227e7ad6d8",
+			"name": "Read Single Tag (Correct UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c3e8183b-f26f-469c-bf28-7f34e6c418ba",
+			"name": "Read All Tags",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag/all",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "43a1d0c4-8c2e-49c1-8d12-384fb78f5cb2",
+			"name": "Read Single Tag (Incorrect UUID)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=none",
+			"time": 3,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 500": true
+			},
+			"testPassFailCounts": {
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 500": true
+				}
+			]
+		},
+		{
+			"id": "8f132225-a766-41dd-a45f-1af1c8e2a2cc",
+			"name": "Update Tag All Params",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4b7a56f1-c093-4b40-ad55-9068a5282a65",
+			"name": "Update Tag All Params No UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "7efa49a8-2917-402b-b8c2-52f625bee612",
+			"name": "Update Tag All Params No Name",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "f1172db5-5df4-456d-b190-1b3c9287ed4a",
+			"name": "Delete Tag",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=bca68468-d7bc-4379-8574-147cab92b29a",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b3581e8d-7051-4510-9fa5-0862b29a87df",
+			"name": "Delete Tag no UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "c0a90d7f-6e9d-41af-830b-7fd000c2bd71",
+			"name": "Create Language (All Parameters)",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3a194519-92ad-44fa-a260-4978fef25a93",
+			"name": "Create Language No Name",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "6b73ed24-07a4-4964-b2e1-cf3db00fd1f3",
+			"name": "Create Language No Description",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "4e3e4e86-ccc2-4aa3-bf92-3720b4108062",
+			"name": "Create Language No ImageURL",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "2314c2fd-d763-4ffe-8818-a31e849ab6d4",
+			"name": "Read All Languages",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language/all",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
 			],
 			"allTests": [
 				{
@@ -201,7 +894,7 @@
 			"id": "87c6c860-c114-4a46-a967-e0d2b662198f",
 			"name": "Read Single Language (Correct UUID)",
 			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=c2c79790-814c-43bf-ac32-782709fb2c98",
-			"time": 5,
+			"time": 19,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -216,7 +909,7 @@
 				}
 			},
 			"times": [
-				5
+				19
 			],
 			"allTests": [
 				{
@@ -228,7 +921,7 @@
 			"id": "33525df5-63b2-4318-8b90-23877f0a5ce8",
 			"name": "Read Single Language (Incorrect UUID)",
 			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=none",
-			"time": 7,
+			"time": 5,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
@@ -243,25 +936,238 @@
 				}
 			},
 			"times": [
-				7
+				5
 			],
 			"allTests": [
 				{
 					"Status code is 500": true
 				}
 			]
+		},
+		{
+			"id": "7dfa79ab-8afa-4bb4-a81a-1c726147af5b",
+			"name": "Update Language",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ee8895c4-b42e-48e2-825a-d7507dc7ffac",
+			"name": "Update Language No UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "ad0f9b62-8015-4d4d-a74f-a5b60c7d1ae1",
+			"name": "Update Language No Name",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "8df42bef-fb07-49e7-a2fc-3e4948962a62",
+			"name": "Update Language No Image URL",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "a16e9913-1577-420c-8b6e-a0e322dac534",
+			"name": "Update Language No Description",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "fd906d62-d8e6-4f65-9737-6f7168412590",
+			"name": "Delete Language with UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=31098c72-7071-4c56-a723-59c13165c12d",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "eed5ab69-2001-474e-8b56-c875f535d319",
+			"name": "Delete Language without UUID",
+			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
 		}
 	],
 	"count": 1,
-	"totalTime": 78,
+	"totalTime": 214,
 	"collection": {
 		"requests": [
 			{
-				"id": "c97503dd-fc7f-49b1-8706-91ca5b1de9cc",
+				"id": "9ff6154e-1adf-4d96-a17a-1575ca7a8fef",
 				"method": "GET"
 			},
 			{
-				"id": "48272c39-1d9f-4a5e-8174-54baf9a09f45",
+				"id": "8b4c68c0-8cf9-499d-9bab-6891fbc91209",
+				"method": "POST"
+			},
+			{
+				"id": "7f20c23c-9bc7-4ecf-9402-86fc3c436133",
+				"method": "POST"
+			},
+			{
+				"id": "aa787195-a089-4ca4-8fa5-962fcf86b0d4",
+				"method": "POST"
+			},
+			{
+				"id": "0c27634d-bd61-4a4f-85f1-caec4928a8f0",
+				"method": "POST"
+			},
+			{
+				"id": "2201e27f-1592-4c1b-ba62-9eda8c673ad5",
+				"method": "POST"
+			},
+			{
+				"id": "f76c2d96-bfaf-43b7-b320-a37afc51b388",
+				"method": "POST"
+			},
+			{
+				"id": "c97503dd-fc7f-49b1-8706-91ca5b1de9cc",
 				"method": "GET"
 			},
 			{
@@ -269,16 +1175,96 @@
 				"method": "GET"
 			},
 			{
-				"id": "c3e8183b-f26f-469c-bf28-7f34e6c418ba",
+				"id": "48272c39-1d9f-4a5e-8174-54baf9a09f45",
 				"method": "GET"
+			},
+			{
+				"id": "d9db9048-7d20-41ce-9751-1d6dd7d1eea9",
+				"method": "PUT"
+			},
+			{
+				"id": "950d32dc-a3c8-45e2-a2f4-7e2f1fe2e1f4",
+				"method": "PUT"
+			},
+			{
+				"id": "6e816990-eb7f-43dd-9a4c-8ab8344dfc2a",
+				"method": "PUT"
+			},
+			{
+				"id": "df4a0cdb-d328-4eeb-854d-dc3bdc207c25",
+				"method": "PUT"
+			},
+			{
+				"id": "6224b100-889e-47e1-b13a-ae292e4187cc",
+				"method": "PUT"
+			},
+			{
+				"id": "d7aadf7e-aa27-446f-af0c-3ad94157f08c",
+				"method": "PUT"
+			},
+			{
+				"id": "114e82b2-b224-4cbd-9636-bee05692f566",
+				"method": "DELETE"
+			},
+			{
+				"id": "cda8873b-1506-470b-8a28-1eddd6a46252",
+				"method": "DELETE"
+			},
+			{
+				"id": "f170207b-8bcd-47ab-ae8b-2afc7edd5fd2",
+				"method": "POST"
+			},
+			{
+				"id": "a276ba4a-52e2-4e33-8c5a-d2c41f8c273d",
+				"method": "POST"
 			},
 			{
 				"id": "4d6faf6b-0d4c-46ca-98fd-06227e7ad6d8",
 				"method": "GET"
 			},
 			{
+				"id": "c3e8183b-f26f-469c-bf28-7f34e6c418ba",
+				"method": "GET"
+			},
+			{
 				"id": "43a1d0c4-8c2e-49c1-8d12-384fb78f5cb2",
 				"method": "GET"
+			},
+			{
+				"id": "8f132225-a766-41dd-a45f-1af1c8e2a2cc",
+				"method": "PUT"
+			},
+			{
+				"id": "4b7a56f1-c093-4b40-ad55-9068a5282a65",
+				"method": "PUT"
+			},
+			{
+				"id": "7efa49a8-2917-402b-b8c2-52f625bee612",
+				"method": "PUT"
+			},
+			{
+				"id": "f1172db5-5df4-456d-b190-1b3c9287ed4a",
+				"method": "DELETE"
+			},
+			{
+				"id": "b3581e8d-7051-4510-9fa5-0862b29a87df",
+				"method": "DELETE"
+			},
+			{
+				"id": "c0a90d7f-6e9d-41af-830b-7fd000c2bd71",
+				"method": "POST"
+			},
+			{
+				"id": "3a194519-92ad-44fa-a260-4978fef25a93",
+				"method": "POST"
+			},
+			{
+				"id": "6b73ed24-07a4-4964-b2e1-cf3db00fd1f3",
+				"method": "POST"
+			},
+			{
+				"id": "4e3e4e86-ccc2-4aa3-bf92-3720b4108062",
+				"method": "POST"
 			},
 			{
 				"id": "2314c2fd-d763-4ffe-8818-a31e849ab6d4",
@@ -291,6 +1277,34 @@
 			{
 				"id": "33525df5-63b2-4318-8b90-23877f0a5ce8",
 				"method": "GET"
+			},
+			{
+				"id": "7dfa79ab-8afa-4bb4-a81a-1c726147af5b",
+				"method": "PUT"
+			},
+			{
+				"id": "ee8895c4-b42e-48e2-825a-d7507dc7ffac",
+				"method": "PUT"
+			},
+			{
+				"id": "ad0f9b62-8015-4d4d-a74f-a5b60c7d1ae1",
+				"method": "PUT"
+			},
+			{
+				"id": "8df42bef-fb07-49e7-a2fc-3e4948962a62",
+				"method": "PUT"
+			},
+			{
+				"id": "a16e9913-1577-420c-8b6e-a0e322dac534",
+				"method": "PUT"
+			},
+			{
+				"id": "fd906d62-d8e6-4f65-9737-6f7168412590",
+				"method": "DELETE"
+			},
+			{
+				"id": "eed5ab69-2001-474e-8b56-c875f535d319",
+				"method": "DELETE"
 			}
 		]
 	}

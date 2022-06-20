@@ -1,12 +1,16 @@
 package dev.marconymous.codesnippets.services;
 
 import dev.marconymous.codesnippets.Config;
+import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import jakarta.ws.rs.core.Response;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Class to implement CRUD operations.
  */
-public abstract class CRUDService {
+public abstract class CRUDService<T> {
   protected final String UUID_REGEX = Config.getProperty("uuid.regexp");
 
   /**
@@ -25,6 +29,14 @@ public abstract class CRUDService {
    */
   @SuppressWarnings("unused")
   public abstract Response getSingle(String uuid);
+
+  /**
+   * Delete item by UUID.
+   *
+   * @param uuid UUID of item.
+   * @return Response for deletion.
+   */
+  public abstract Response delete(@UUIDValidNotNull String uuid);
 
   /**
    * Check if UUID is valid.

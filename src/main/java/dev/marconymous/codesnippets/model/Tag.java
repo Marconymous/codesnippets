@@ -1,40 +1,34 @@
 package dev.marconymous.codesnippets.model;
 
+
+import dev.marconymous.codesnippets.annotations.UUIDValidOrNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import jakarta.ws.rs.FormParam;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Tag class
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Tag {
   /**
    * The UUID of the tag.
    */
+  @UUIDValidOrNull
+  @FormParam("uuid")
   private String UUID;
 
   /**
    * The name of the tag.
    */
+  @NotBlank
+  @NotNull
+  @FormParam("name")
   private String name;
-
-  public Tag() {
-    this(null);
-  }
-
-  public Tag(String name) {
-    this.name = name;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getUUID() {
-    return UUID;
-  }
-
-  public void setUUID(String UUID) {
-    this.UUID = UUID;
-  }
 }

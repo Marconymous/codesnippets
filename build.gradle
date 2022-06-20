@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'war'
+    id "io.freefair.lombok" version "6.4.3"
 }
 
 group 'dev.marconymous'
@@ -23,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     compileOnly('jakarta.platform:jakarta.jakartaee-api:9.1.0')
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
