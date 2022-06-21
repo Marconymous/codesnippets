@@ -1,12 +1,9 @@
 package dev.marconymous.codesnippets.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.marconymous.codesnippets.Config;
+import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.data.DataHandler;
-import dev.marconymous.codesnippets.model.CodeSnippet;
-import dev.marconymous.codesnippets.model.ProgrammingLanguage;
-import dev.marconymous.codesnippets.model.Tag;
-import dev.marconymous.codesnippets.model.Visibility;
+import dev.marconymous.codesnippets.model.*;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
@@ -39,6 +36,10 @@ public class RestorationService {
     new CodeSnippet("52abdb76-36dd-4c58-862c-2bebc3bcf1dd", "Kotlin While Loop", "while (x < 10) {\nprintln(x)\nx++\n}", new Date(), List.of(tags[0]), Visibility.PUBLIC, null, languages[2])
   };
 
+  public static User[] users = {
+    new User(Utils.UUIDString(), "admin", "IchLadKurzAuf100")
+  };
+
   @GET
   public Response restore(@QueryParam("pwd") String password) {
     if (!password.equals("reset-all")) {
@@ -50,6 +51,7 @@ public class RestorationService {
       om.writeValue(get(getProperty("snippets.path")).toFile(), snippets);
       om.writeValue(get(getProperty("languages.path")).toFile(), languages);
       om.writeValue(get(getProperty("tags.path")).toFile(), tags);
+      om.writeValue(get(getProperty("users.path")).toFile(), users);
 
       DataHandler.reset();
     } catch (IOException e) {

@@ -5,6 +5,7 @@ import dev.marconymous.codesnippets.Config;
 import dev.marconymous.codesnippets.model.CodeSnippet;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
 import dev.marconymous.codesnippets.model.Tag;
+import dev.marconymous.codesnippets.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,14 +41,25 @@ public class DataHandler {
   @Setter
   private static List<Tag> tagList;
 
+  private static final String USER_FILE = Config.getProperty("users.path");
+
   private static final String LANGUAGE_FILE = Config.getProperty("languages.path");
   private static final String TAGS_FILE = Config.getProperty("tags.path");
   private static final String SNIPPETS_FILE = Config.getProperty("snippets.path");
+  @Getter
+  @Setter
+  private static List<User> userList;
 
   static {
     readLanguageFile();
     readTagFile();
     readCodeSnippetFile();
+    readUserFile();
+  }
+
+  private static void readUserFile() {
+    var data = readFileToList(USER_FILE, User[].class);
+    setUserList(data);
   }
 
   /**
@@ -189,5 +201,13 @@ public class DataHandler {
     readLanguageFile();
     readTagFile();
     readCodeSnippetFile();
+  }
+
+  public static Tuple<Boolean, String> getUser(String user, String pass) {
+    var data = userList.stream().filter(u -> user.equals(u.getUserName())
+      && pass.equals(u.getPassword())
+    ).findFirst().orElse(null);
+
+    return data == null ? Tuple.of(false, "guest") : Tuple.of(true, data.getUserName());
   }
 }

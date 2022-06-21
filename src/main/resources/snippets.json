@@ -1,1 +1,35 @@
-[{"title":"Java For Loop","content":"for (int i = 0; i < 10; i++) {\nSystem.out.println(i);\n}","visibility":"PUBLIC","creator":null,"programmingLanguageUUID":"c2c79790-814c-43bf-ac32-782709fb2c98","uuid":"d9212ce9-09b5-4e22-8820-3d319047b318","tagUUIDs":["4c643935-f395-431b-bff8-8a76fc2050b5"]},{"title":"[Postman Test] new Title","content":"new content","visibility":"PUBLIC","creator":null,"programmingLanguageUUID":"c2c79790-814c-43bf-ac32-782709fb2c98","uuid":"8f694d07-436c-4fbe-b077-b968072f32dd","tagUUIDs":["4c643935-f395-431b-bff8-8a76fc2050b5"]},{"title":"[Postman Test] Title","content":"pm.test(\"Status code is 400\", () => {pm.response.to.have.status(400);}}","visibility":"PRIVATE","creator":null,"programmingLanguageUUID":"c2c79790-814c-43bf-ac32-782709fb2c98","uuid":"9b41848a-9c36-40ae-9674-dbeb3ab3a637","tagUUIDs":["4c643935-f395-431b-bff8-8a76fc2050b5"]},{"title":"[Postman Test] Title","content":"pm.test(\"Status code is 400\", () => {pm.response.to.have.status(400);}}","visibility":"PRIVATE","creator":null,"programmingLanguageUUID":"c2c79790-814c-43bf-ac32-782709fb2c98","uuid":"1c315312-5f31-4f2b-85e2-4b621dee4958","tagUUIDs":[]}]
+[
+  {
+    "title": "Java For Loop",
+    "content": "for (int i = 0; i < 10; i++) {\nSystem.out.println(i);\n}",
+    "visibility": "PUBLIC",
+    "creator": null,
+    "uuid": "d9212ce9-09b5-4e22-8820-3d319047b318",
+    "tagUUIDs": [
+      "4c643935-f395-431b-bff8-8a76fc2050b5"
+    ],
+    "programmingLanguageUUID": "c2c79790-814c-43bf-ac32-782709fb2c98"
+  },
+  {
+    "title": "Python If Statement",
+    "content": "if (x < 0):\nprint('x is smaller than 0')",
+    "visibility": "PUBLIC",
+    "creator": null,
+    "uuid": "8f694d07-436c-4fbe-b077-b968072f32dd",
+    "tagUUIDs": [
+      "4c643935-f395-431b-bff8-8a76fc2050b5"
+    ],
+    "programmingLanguageUUID": "6dcfb985-4693-4b44-8269-5ef41a59da20"
+  },
+  {
+    "title": "Kotlin While Loop",
+    "content": "while (x < 10) {\nprintln(x)\nx++\n}",
+    "visibility": "PUBLIC",
+    "creator": null,
+    "uuid": "52abdb76-36dd-4c58-862c-2bebc3bcf1dd",
+    "tagUUIDs": [
+      "4c643935-f395-431b-bff8-8a76fc2050b5"
+    ],
+    "programmingLanguageUUID": "31098c72-7071-4c56-a723-59c13165c12d"
+  }
+]
