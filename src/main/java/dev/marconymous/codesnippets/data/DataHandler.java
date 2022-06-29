@@ -203,11 +203,9 @@ public class DataHandler {
     readCodeSnippetFile();
   }
 
-  public static Tuple<Boolean, String> getUser(String user, String pass) {
-    var data = userList.stream().filter(u -> user.equals(u.getUserName())
+  public static User getUser(String user, String pass) {
+    return userList.stream().filter(u -> user.equals(u.getUserName())
       && pass.equals(u.getPassword())
-    ).findFirst().orElse(null);
-
-    return data == null ? Tuple.of(false, "guest") : Tuple.of(true, data.getUserName());
+    ).findFirst().orElse(new User("", "user", "", "guest"));
   }
 }

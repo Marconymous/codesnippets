@@ -25,4 +25,9 @@ public class User {
    * The user's password.
    */
   private String password;
+
+  /**
+   * The user's user-role
+   */
+  private String role;
 }

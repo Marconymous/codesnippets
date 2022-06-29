@@ -1,7 +1,14 @@
 [
   {
-    "userUUID": "7676a732-baef-4990-a621-781f54646513",
+    "userUUID": "9301bfcc-141b-44af-baee-d805ec884406",
     "userName": "admin",
-    "password": "IchLadKurzAuf100"
+    "password": "IchLadKurzAuf100",
+    "role": "admin"
+  },
+  {
+    "userUUID": "74a5e562-dcef-4d96-a859-a6f39c2800bf",
+    "userName": "user",
+    "password": "winkwonk",
+    "role": "user"
   }
 ]

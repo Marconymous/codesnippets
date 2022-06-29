@@ -1,36 +1,70 @@
 package dev.marconymous.codesnippets.services;
 
+import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.data.DataHandler;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.ws.rs.FormParam;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
 
 @Path("user")
 public class UserService {
 
+  /**
+   * Login to use Services
+   *
+   * @param user the username of the User
+   * @param pass the password of the user
+   * @return a cookie with userdata
+   */
   @POST
   @Produces(MediaType.TEXT_PLAIN)
   @Path("/login")
   public Response login(
     @FormParam("username") String user,
-    @FormParam("password") String pass,
-    @Context HttpServletRequest request
+    @FormParam("password") String pass
   ) {
-    var session = request.getSession();
-
-    if (session.getAttribute("user") != null) {
-      return Response.ok().entity("Already logged in!").build();
-    }
-
     var loggedInUser = DataHandler.getUser(user, pass);
+    var userRole = loggedInUser.getRole();
+    var token = user + ";" + userRole;
 
-    session.setAttribute("user", loggedInUser.second());
+    var cookie = new NewCookie(
+      "token",
+      Utils.AES256.encrypt(token),
+      "/",
+      "",
+      "Auth-Token",
+      600,
+      false
+    );
 
-    return Response.status(loggedInUser.first() ? 200 : 404).entity(loggedInUser.second()).build();
+    return Response.ok().cookie(cookie)
+      .entity(loggedInUser.getUserName() + " logged in!").build();
+  }
+
+  /**
+   * Logout for Users
+   *
+   * @return a new Login Cookie with no data
+   */
+  @GET
+  @Path("/logout")
+  @Produces(MediaType.TEXT_PLAIN)
+  public Response logout() {
+    NewCookie tokenCookie = new NewCookie(
+      "token",
+      "",
+      "/",
+      "",
+      "Auth-Token",
+      1,
+      false
+    );
+
+    return Response
+      .ok()
+      .entity("Logged Out!")
+      .cookie(tokenCookie)
+      .build();
   }
 }

@@ -1,14 +1,1 @@
-[
-  {
-    "name": "for-loop",
-    "uuid": "4c643935-f395-431b-bff8-8a76fc2050b5"
-  },
-  {
-    "name": "if-statement",
-    "uuid": "b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4"
-  },
-  {
-    "name": "while-loop",
-    "uuid": "bca68468-d7bc-4379-8574-147cab92b29a"
-  }
-]
+[{"name":"for-loop","uuid":"4c643935-f395-431b-bff8-8a76fc2050b5"},{"name":"if-statement","uuid":"b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4"},{"name":"while-loop","uuid":"bca68468-d7bc-4379-8574-147cab92b29a"}]

@@ -1,11 +1,14 @@
 package dev.marconymous.codesnippets.services;
 
 import dev.marconymous.codesnippets.Config;
+import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
+import dev.marconymous.codesnippets.exceptions.WithStatusException;
 import jakarta.ws.rs.core.Response;
 
-import java.util.Arrays;
-import java.util.Objects;
+import static dev.marconymous.codesnippets.Utils.Roles.ADMIN;
+import static dev.marconymous.codesnippets.Utils.Roles.USER;
+import static jakarta.ws.rs.core.Response.Status.UNAUTHORIZED;
 
 /**
  * Class to implement CRUD operations.
@@ -19,7 +22,7 @@ public abstract class CRUDService<T> {
    * @return Response with list of items.
    */
   @SuppressWarnings("unused")
-  public abstract Response getAll();
+  public abstract Response getAll(String token);
 
   /**
    * Get item by UUID.
@@ -28,7 +31,7 @@ public abstract class CRUDService<T> {
    * @return Response with item.
    */
   @SuppressWarnings("unused")
-  public abstract Response getSingle(String uuid);
+  public abstract Response getSingle(String uuid, String token);
 
   /**
    * Delete item by UUID.
@@ -36,7 +39,7 @@ public abstract class CRUDService<T> {
    * @param uuid UUID of item.
    * @return Response for deletion.
    */
-  public abstract Response delete(@UUIDValidNotNull String uuid);
+  public abstract Response delete(@UUIDValidNotNull String uuid, String token);
 
   /**
    * Check if UUID is valid.
@@ -83,5 +86,28 @@ public abstract class CRUDService<T> {
     }
 
     return Response.ok().entity(data).build();
+  }
+
+  /**
+   * Method to validate if a user is logged in and has the correct role
+   *
+   * @param token        the token of the user
+   * @param requiredRole the required role
+   */
+  protected final void validateLogin(String token, String requiredRole) {
+    var decrypted = Utils.AES256.decrypt(token);
+    if (decrypted == null) throw new WithStatusException(UNAUTHORIZED);
+    var vals = decrypted.split(";");
+    if (vals.length < 2) throw new WithStatusException(UNAUTHORIZED);
+    if (!checkRole(requiredRole, token))
+      throw new WithStatusException(UNAUTHORIZED);
+  }
+
+  private boolean checkRole(String req, String current) {
+    if (!req.equals(USER) && !req.equals(ADMIN)) throw new IllegalArgumentException(req + " is not valid!");
+
+    if (req.equals(current)) return true;
+
+    return req.equals(USER) && current.equals(ADMIN);
   }
 }

@@ -9,6 +9,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import static dev.marconymous.codesnippets.Utils.Roles.ADMIN;
+import static dev.marconymous.codesnippets.Utils.Roles.USER;
+
 /**
  * Service for code snippets.
  */
@@ -24,7 +27,10 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   @Path("/all")
   @Override
   @Produces(MediaType.APPLICATION_JSON)
-  public Response getAll() {
+  public Response getAll(
+    @CookieParam("token") String token
+  ) {
+    validateLogin(token, USER);
     return generateResponseForGET(DataHandler.getCodeSnippetList());
   }
 
@@ -37,7 +43,12 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   @Override
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public Response getSingle(@QueryParam("uuid") String uuid) {
+  public Response getSingle(
+    @QueryParam("uuid") String uuid,
+    @CookieParam("token") String token
+  ) {
+    validateLogin(token, USER);
+
     var data = DataHandler.getCodeSnippetByUUID(uuid);
 
     return generateResponseForGET(data, uuid);
@@ -52,8 +63,10 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   @POST
   @Produces(MediaType.TEXT_PLAIN)
   public Response create(
-    @Valid @BeanParam CodeSnippet obj
+    @Valid @BeanParam CodeSnippet obj,
+      @CookieParam("token") String token
   ) {
+    validateLogin(token, ADMIN);
     obj.setUUID(Utils.UUIDString());
 
     DataHandler.addCodeSnippet(obj);
@@ -70,8 +83,11 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
   public Response update(
-    @Valid @BeanParam CodeSnippet obj
+    @Valid @BeanParam CodeSnippet obj,
+    @CookieParam("token") String token
   ) {
+    validateLogin(token, ADMIN);
+
     if (!new UUIDValidNotNull.Validator().isValid(obj.getUUID(), null)) {
       return Response.status(Response.Status.BAD_REQUEST).entity("UUID is not valid").build();
     }
@@ -96,7 +112,10 @@ public class CodeSnippetService extends CRUDService<CodeSnippet> {
   @DELETE
   @Produces(MediaType.TEXT_PLAIN)
   @Override
-  public Response delete(@UUIDValidNotNull @QueryParam("uuid") String uuid) {
+  public Response delete(@UUIDValidNotNull @QueryParam("uuid") String uuid,
+                         @CookieParam("token") String token) {
+    validateLogin(token, ADMIN);
+
     var data = DataHandler.getCodeSnippetByUUID(uuid);
     DataHandler.removeCodeSnippet(data);
 

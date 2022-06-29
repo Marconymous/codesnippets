@@ -13,6 +13,8 @@ import jakarta.ws.rs.core.Response;
 import javax.xml.crypto.Data;
 import java.util.UUID;
 
+import static dev.marconymous.codesnippets.Utils.Roles.ADMIN;
+import static dev.marconymous.codesnippets.Utils.Roles.USER;
 import static dev.marconymous.codesnippets.Utils.UUIDString;
 
 /**
@@ -29,7 +31,11 @@ public class TagService extends CRUDService<Tag> {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("/all")
-  public Response getAll() {
+  public Response getAll(
+    @CookieParam("token") String token
+  ) {
+    validateLogin(token, USER);
+
     return generateResponseForGET(DataHandler.getTagList());
   }
 
@@ -42,7 +48,12 @@ public class TagService extends CRUDService<Tag> {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Override
-  public Response getSingle(@QueryParam("uuid") String uuid) {
+  public Response getSingle(
+    @QueryParam("uuid") String uuid,
+    @CookieParam("token") String token
+  ) {
+    validateLogin(token, USER);
+
     var data = DataHandler.getTagByUUID(uuid);
     return generateResponseForGET(data, uuid);
   }
@@ -57,8 +68,12 @@ public class TagService extends CRUDService<Tag> {
   @POST
   @Produces(MediaType.TEXT_PLAIN)
   public Response create(
-    @Valid @BeanParam Tag tag
+    @Valid @BeanParam Tag tag,
+    @CookieParam("token") String token
   ) {
+    validateLogin(token, ADMIN);
+
+
     tag.setUUID(UUIDString());
     DataHandler.addTag(tag);
 
@@ -74,8 +89,11 @@ public class TagService extends CRUDService<Tag> {
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
   public Response update(
-    @Valid @BeanParam Tag tag
+    @Valid @BeanParam Tag tag,
+    @CookieParam("token") String token
   ) {
+    validateLogin(token, ADMIN);
+
     if (!new UUIDValidNotNull.Validator().isValid(tag.getUUID(), null))
       return Response.status(Response.Status.BAD_REQUEST).entity("uuid is not defined/not valid").build();
 
@@ -96,8 +114,11 @@ public class TagService extends CRUDService<Tag> {
   @DELETE
   @Produces(MediaType.TEXT_PLAIN)
   public Response delete(
-    @UUIDValidNotNull @QueryParam("uuid") String uuid
+    @UUIDValidNotNull @QueryParam("uuid") String uuid,
+    @CookieParam("token") String token
   ) {
+    validateLogin(token, ADMIN);
+
     var tag = DataHandler.getTagByUUID(uuid);
     DataHandler.removeTag(tag);
 

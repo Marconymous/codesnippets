@@ -37,7 +37,8 @@ public class RestorationService {
   };
 
   public static User[] users = {
-    new User(Utils.UUIDString(), "admin", "IchLadKurzAuf100")
+    new User(Utils.UUIDString(), "admin", "IchLadKurzAuf100", "admin"),
+    new User(Utils.UUIDString(), "user", "winkwonk", "user")
   };
 
   @GET

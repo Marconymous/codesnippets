@@ -72,7 +72,7 @@ public class CodeSnippet {
   /**
    * The User who created the code snippet.
    */
-  private ApplicationUser creator;
+  private User creator;
 
   /**
    * The Language for which this snippet is
