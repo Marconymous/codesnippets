@@ -3,6 +3,7 @@ package dev.marconymous.codesnippets.services;
 import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -16,7 +17,7 @@ import static dev.marconymous.codesnippets.Utils.anyIsNull;
  * Service for programming languages.
  */
 @Path("/language")
-public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage> {
+public class ProgrammingLanguageService extends CRUDService {
   /**
    * Lists all programming languages.
    *
@@ -26,10 +27,9 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("/all")
+  @RolesAllowed({ADMIN, USER})
   public Response getAll(
-    @CookieParam("token") String token
   ) {
-    validateLogin(token, USER);
     return generateResponseForGET(DataHandler.getLanguageList());
   }
 
@@ -42,21 +42,20 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Override
-  public Response getSingle(@QueryParam("uuid") String uuid,
-                            @CookieParam("token") String token) {
-    validateLogin(token, USER);
-
+  @RolesAllowed({ADMIN, USER})
+  public Response getSingle(
+    @QueryParam("uuid") String uuid
+  ) {
     return generateResponseForGET(DataHandler.getLanguageByUUID(uuid), uuid);
   }
 
   @POST
   @Produces(MediaType.TEXT_PLAIN)
+  @RolesAllowed(ADMIN)
   public Response create(
     @Valid @BeanParam ProgrammingLanguage language,
     @CookieParam("token") String token
   ) {
-    validateLogin(token, ADMIN);
-
     DataHandler.addLanguage(language);
     return Response.ok().entity("Language Created").build();
   }
@@ -64,13 +63,12 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
   @DELETE
   @Produces(MediaType.TEXT_PLAIN)
   @Override
+  @RolesAllowed(ADMIN)
   public Response delete(
-    @QueryParam("uuid") String uuid,
-    @CookieParam("token") String token
+    @QueryParam("uuid") String uuid
   ) {
-    validateLogin(token, ADMIN);
 
-    if(anyIsNull(uuid))
+    if (anyIsNull(uuid))
       return Response.status(Response.Status.BAD_REQUEST).entity("uuid is not defined").build();
 
     DataHandler.removeLanguage(DataHandler.getLanguageByUUID(uuid));
@@ -79,13 +77,10 @@ public class ProgrammingLanguageService extends CRUDService<ProgrammingLanguage>
 
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
+  @RolesAllowed(ADMIN)
   public Response update(
-    @Valid @BeanParam ProgrammingLanguage language,
-    @CookieParam("token") String token
+    @Valid @BeanParam ProgrammingLanguage language
   ) {
-    validateLogin(token, ADMIN);
-
-
     if (!new UUIDValidNotNull.Validator().isValid(language.getUUID(), null))
       return Response.status(Response.Status.BAD_REQUEST).entity("uuid is not defined/not valid").build();
 

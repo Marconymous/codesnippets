@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.*;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
@@ -14,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import static dev.marconymous.codesnippets.Config.getProperty;
+import static dev.marconymous.codesnippets.Utils.Roles.ADMIN;
 import static java.nio.file.Paths.get;
 
 @Path("restore")
@@ -42,6 +44,7 @@ public class RestorationService {
   };
 
   @GET
+  @RolesAllowed(ADMIN)
   public Response restore(@QueryParam("pwd") String password) {
     if (!password.equals("reset-all")) {
       return Response.status(Response.Status.BAD_REQUEST).entity("Wrong Password!").build();

@@ -3,15 +3,12 @@ package dev.marconymous.codesnippets.services;
 import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.Tag;
-import jakarta.decorator.Delegate;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Size;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
-import javax.xml.crypto.Data;
-import java.util.UUID;
 
 import static dev.marconymous.codesnippets.Utils.Roles.ADMIN;
 import static dev.marconymous.codesnippets.Utils.Roles.USER;
@@ -21,7 +18,7 @@ import static dev.marconymous.codesnippets.Utils.UUIDString;
  * Tag service.
  */
 @Path("/tag")
-public class TagService extends CRUDService<Tag> {
+public class TagService extends CRUDService {
   /**
    * Get all tags.
    *
@@ -31,11 +28,9 @@ public class TagService extends CRUDService<Tag> {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("/all")
+  @RolesAllowed({ADMIN, USER})
   public Response getAll(
-    @CookieParam("token") String token
   ) {
-    validateLogin(token, USER);
-
     return generateResponseForGET(DataHandler.getTagList());
   }
 
@@ -48,11 +43,9 @@ public class TagService extends CRUDService<Tag> {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Override
+  @RolesAllowed({ADMIN, USER})
   public Response getSingle(
-    @QueryParam("uuid") String uuid,
-    @CookieParam("token") String token
-  ) {
-    validateLogin(token, USER);
+    @QueryParam("uuid") String uuid) {
 
     var data = DataHandler.getTagByUUID(uuid);
     return generateResponseForGET(data, uuid);
@@ -67,13 +60,9 @@ public class TagService extends CRUDService<Tag> {
    */
   @POST
   @Produces(MediaType.TEXT_PLAIN)
+  @RolesAllowed(ADMIN)
   public Response create(
-    @Valid @BeanParam Tag tag,
-    @CookieParam("token") String token
-  ) {
-    validateLogin(token, ADMIN);
-
-
+    @Valid @BeanParam Tag tag) {
     tag.setUUID(UUIDString());
     DataHandler.addTag(tag);
 
@@ -88,12 +77,9 @@ public class TagService extends CRUDService<Tag> {
    */
   @PUT
   @Produces(MediaType.TEXT_PLAIN)
+  @RolesAllowed(ADMIN)
   public Response update(
-    @Valid @BeanParam Tag tag,
-    @CookieParam("token") String token
-  ) {
-    validateLogin(token, ADMIN);
-
+    @Valid @BeanParam Tag tag) {
     if (!new UUIDValidNotNull.Validator().isValid(tag.getUUID(), null))
       return Response.status(Response.Status.BAD_REQUEST).entity("uuid is not defined/not valid").build();
 
@@ -113,12 +99,9 @@ public class TagService extends CRUDService<Tag> {
    */
   @DELETE
   @Produces(MediaType.TEXT_PLAIN)
+  @RolesAllowed(ADMIN)
   public Response delete(
-    @UUIDValidNotNull @QueryParam("uuid") String uuid,
-    @CookieParam("token") String token
-  ) {
-    validateLogin(token, ADMIN);
-
+    @UUIDValidNotNull @QueryParam("uuid") String uuid) {
     var tag = DataHandler.getTagByUUID(uuid);
     DataHandler.removeTag(tag);
 

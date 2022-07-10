@@ -13,7 +13,7 @@ import static jakarta.ws.rs.core.Response.Status.UNAUTHORIZED;
 /**
  * Class to implement CRUD operations.
  */
-public abstract class CRUDService<T> {
+public abstract class CRUDService {
   protected final String UUID_REGEX = Config.getProperty("uuid.regexp");
 
   /**
@@ -22,7 +22,7 @@ public abstract class CRUDService<T> {
    * @return Response with list of items.
    */
   @SuppressWarnings("unused")
-  public abstract Response getAll(String token);
+  public abstract Response getAll();
 
   /**
    * Get item by UUID.
@@ -31,7 +31,7 @@ public abstract class CRUDService<T> {
    * @return Response with item.
    */
   @SuppressWarnings("unused")
-  public abstract Response getSingle(String uuid, String token);
+  public abstract Response getSingle(String uuid);
 
   /**
    * Delete item by UUID.
@@ -39,7 +39,7 @@ public abstract class CRUDService<T> {
    * @param uuid UUID of item.
    * @return Response for deletion.
    */
-  public abstract Response delete(@UUIDValidNotNull String uuid, String token);
+  public abstract Response delete(@UUIDValidNotNull String uuid);
 
   /**
    * Check if UUID is valid.
@@ -96,15 +96,15 @@ public abstract class CRUDService<T> {
    */
   protected final void validateLogin(String token, String requiredRole) {
     var decrypted = Utils.AES256.decrypt(token);
-    if (decrypted == null) throw new WithStatusException(UNAUTHORIZED);
+    if (decrypted == null) throw new WithStatusException("You are not authorized", UNAUTHORIZED);
     var vals = decrypted.split(";");
-    if (vals.length < 2) throw new WithStatusException(UNAUTHORIZED);
+    if (vals.length < 2) throw new WithStatusException("You are not authorized",UNAUTHORIZED);
     if (!checkRole(requiredRole, token))
-      throw new WithStatusException(UNAUTHORIZED);
+      throw new WithStatusException("You are not authorized",UNAUTHORIZED);
   }
 
   private boolean checkRole(String req, String current) {
-    if (!req.equals(USER) && !req.equals(ADMIN)) throw new IllegalArgumentException(req + " is not valid!");
+    if (!req.equals(USER) && !req.equals(ADMIN)) return false;
 
     if (req.equals(current)) return true;
 

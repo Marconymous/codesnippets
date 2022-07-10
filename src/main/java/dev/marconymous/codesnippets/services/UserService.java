@@ -2,10 +2,15 @@ package dev.marconymous.codesnippets.services;
 
 import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.data.DataHandler;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
+
+import static dev.marconymous.codesnippets.Utils.Roles.ADMIN;
+import static dev.marconymous.codesnippets.Utils.Roles.USER;
 
 @Path("user")
 public class UserService {
@@ -20,6 +25,7 @@ public class UserService {
   @POST
   @Produces(MediaType.TEXT_PLAIN)
   @Path("/login")
+  @PermitAll
   public Response login(
     @FormParam("username") String user,
     @FormParam("password") String pass
@@ -50,6 +56,7 @@ public class UserService {
   @GET
   @Path("/logout")
   @Produces(MediaType.TEXT_PLAIN)
+  @PermitAll
   public Response logout() {
     NewCookie tokenCookie = new NewCookie(
       "token",
