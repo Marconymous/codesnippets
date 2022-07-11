@@ -2,7 +2,6 @@ package dev.marconymous.codesnippets.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.marconymous.codesnippets.Config;
-import dev.marconymous.codesnippets.Utils;
 import dev.marconymous.codesnippets.model.CodeSnippet;
 import dev.marconymous.codesnippets.model.ProgrammingLanguage;
 import dev.marconymous.codesnippets.model.Tag;

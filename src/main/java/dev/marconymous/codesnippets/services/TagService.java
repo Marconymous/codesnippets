@@ -3,7 +3,6 @@ package dev.marconymous.codesnippets.services;
 import dev.marconymous.codesnippets.annotations.UUIDValidNotNull;
 import dev.marconymous.codesnippets.data.DataHandler;
 import dev.marconymous.codesnippets.model.Tag;
-import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;

@@ -53,8 +53,7 @@ public class ProgrammingLanguageService extends CRUDService {
   @Produces(MediaType.TEXT_PLAIN)
   @RolesAllowed(ADMIN)
   public Response create(
-    @Valid @BeanParam ProgrammingLanguage language,
-    @CookieParam("token") String token
+    @Valid @BeanParam ProgrammingLanguage language
   ) {
     DataHandler.addLanguage(language);
     return Response.ok().entity("Language Created").build();

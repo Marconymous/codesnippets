@@ -1,5 +1,7 @@
 package dev.marconymous.codesnippets;
 
+import jakarta.ws.rs.CookieParam;
+
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
@@ -22,9 +24,7 @@ public class Utils {
   }
 
   public static void executeIfNotNull(Object obj, Runnable runnable) {
-    if (obj != null) {
-      runnable.run();
-    }
+    if (obj != null) runnable.run();
   }
 
   public static boolean anyIsNull(Object... objs) {
@@ -39,9 +39,8 @@ public class Utils {
    * @author Lokesh Gupta(<a href="https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/">https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/</a>)   *
    */
   public static class AES256 {
-    private static final String SECRET_KEY = "my_super_secret_key";
-    private static final String SALT = "ssshhhhhhhhhhh!!!!";
-
+    private static final String SECRET_KEY = Config.getProperty("aes.secret.key");
+    private static final String SALT = Config.getProperty("aes.secret.salt");
 
     private interface Executable {
       String execute(IvParameterSpec ivSpec, SecretKeyFactory factory, KeySpec spec, SecretKey tmp, SecretKeySpec secretKey) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException;
@@ -96,5 +95,7 @@ public class Utils {
   public static class Roles {
     public static final String USER = "user";
     public static final String ADMIN = "admin";
+
+    public static final String LOGGIN_IN = "loggedIn";
   }
 }

@@ -41,7 +41,7 @@ public class AuthorizationFilter implements ContainerRequestFilter {
     var called = resourceInfo.getResourceMethod();
 
     if (called.isAnnotationPresent(DenyAll.class)) {
-      requestContext.abortWith(abortResponse(null, null));
+      requestContext.abortWith(abortResponse());
       return;
     }
 
@@ -50,19 +50,16 @@ public class AuthorizationFilter implements ContainerRequestFilter {
     }
 
     if (tokenCookie == null) {
-      requestContext.abortWith(abortResponse(null, null));
+      requestContext.abortWith(abortResponse());
       return;
     }
 
     var loggedIn = Utils.AES256.decrypt(tokenCookie.getValue()).split(";")[1];
 
-    System.out.println("User: " + loggedIn + " is trying to access: " + called.getDeclaringClass().getSimpleName() + "." + called.getName());
-
     if (called.isAnnotationPresent(RolesAllowed.class)) {
       var roles = called.getAnnotation(RolesAllowed.class).value();
-      System.out.println("Required: " + Arrays.toString(roles) + " Found: " + loggedIn);
       if (Arrays.stream(roles).noneMatch(r -> r.equals(loggedIn))) {
-        requestContext.abortWith(abortResponse(loggedIn, called.getDeclaringClass().getSimpleName() + "." + called.getName()));
+        requestContext.abortWith(abortResponse());
       }
       return;
     }
@@ -70,8 +67,7 @@ public class AuthorizationFilter implements ContainerRequestFilter {
     requestContext.abortWith(Response.status(UNAUTHORIZED).entity("Requested resource doesn't have any access restrictions.").build());
   }
 
-  private Response abortResponse(String user, String method) {
-    System.out.println("User: " + user + " not allowed to access: " + method);
+  private Response abortResponse() {
     return Response.status(UNAUTHORIZED).build();
   }
 }
