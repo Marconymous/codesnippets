@@ -98,8 +98,6 @@ public class UserService {
     } else {
       return Response.status(400).entity("2FA failed").build();
     }
-
-
   }
 
   /**
