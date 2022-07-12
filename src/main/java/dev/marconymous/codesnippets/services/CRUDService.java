@@ -98,9 +98,9 @@ public abstract class CRUDService {
     var decrypted = Utils.AES256.decrypt(token);
     if (decrypted == null) throw new WithStatusException("You are not authorized", UNAUTHORIZED);
     var vals = decrypted.split(";");
-    if (vals.length < 2) throw new WithStatusException("You are not authorized",UNAUTHORIZED);
+    if (vals.length < 2) throw new WithStatusException("You are not authorized", UNAUTHORIZED);
     if (!checkRole(requiredRole, token))
-      throw new WithStatusException("You are not authorized",UNAUTHORIZED);
+      throw new WithStatusException("You are not authorized", UNAUTHORIZED);
   }
 
   private boolean checkRole(String req, String current) {

@@ -1,18 +1,59 @@
 {
-	"id": "10c2691c-8b3a-4999-891a-f89fa966f5ac",
+	"id": "d16c6216-2186-4891-823b-8e0dfedf0bf7",
 	"name": "Codesnippets",
-	"timestamp": "2022-06-20T19:02:40.198Z",
+	"timestamp": "2022-07-12T12:50:24.270Z",
 	"collection_id": "16371436-3ab909d2-b6bf-47f0-bee6-f99578ad8838",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 41,
+	"totalPass": 126,
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "9ff6154e-1adf-4d96-a17a-1575ca7a8fef",
-			"name": "RESET",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/restore?pwd=reset-all",
-			"time": 10,
+			"id": "7a199fd0-adaa-4951-af07-63c6c8b01f90",
+			"name": "Login Correct Login",
+			"time": 105,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status for admin": true
+			},
+			"testPassFailCounts": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				740,
+				98,
+				105
+			],
+			"allTests": [
+				{
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
+				}
+			]
+		},
+		{
+			"id": "b6a0d245-da69-4e02-89b1-8e6ecfe96f0e",
+			"name": "2FA Login",
+			"time": 275,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -20,1124 +61,1814 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				10
+				367,
+				337,
+				275
 			],
 			"allTests": [
+				{},
+				{},
+				{}
+			]
+		},
+		{
+			"id": "9ff6154e-1adf-4d96-a17a-1575ca7a8fef",
+			"name": "RESET",
+			"time": 185,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				105,
+				92,
+				185
+			],
+			"allTests": [
+				{},
+				{},
 				{}
 			]
 		},
 		{
 			"id": "8b4c68c0-8cf9-499d-9bab-6891fbc91209",
 			"name": "Create CodeSnippet All Params",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 5,
+			"time": 409,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				87,
+				86,
+				409
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "7f20c23c-9bc7-4ecf-9402-86fc3c436133",
 			"name": "Create CodeSnippet No TagUUIDs",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 5,
+			"time": 163,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				86,
+				112,
+				163
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "aa787195-a089-4ca4-8fa5-962fcf86b0d4",
 			"name": "Create CodeSnippet No Visibility",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 7,
+			"time": 341,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				7
+				221,
+				93,
+				341
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "0c27634d-bd61-4a4f-85f1-caec4928a8f0",
 			"name": "Create CodeSnippet No Programming Language UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 7,
+			"time": 216,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
 			},
 			"tests": {
-				"Status code is 500": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 500": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				7
+				128,
+				92,
+				216
 			],
 			"allTests": [
 				{
-					"Status code is 500": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "2201e27f-1592-4c1b-ba62-9eda8c673ad5",
 			"name": "Create CodeSnippet No Content",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 5,
+			"time": 167,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				120,
+				92,
+				167
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "f76c2d96-bfaf-43b7-b320-a37afc51b388",
 			"name": "Create CodeSnippet No Title",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 5,
+			"time": 152,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				116,
+				86,
+				152
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "c97503dd-fc7f-49b1-8706-91ca5b1de9cc",
 			"name": "Read All Codesnippets",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet/all",
-			"time": 3,
+			"time": 155,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				3
+				397,
+				187,
+				155
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "106944f0-15d0-41fb-975b-e34153872120",
 			"name": "Read Single CodeSnippet (Incorrect UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=none",
-			"time": 4,
+			"time": 143,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
 			},
 			"tests": {
-				"Status code is 500": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 500": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				202,
+				98,
+				143
 			],
 			"allTests": [
 				{
-					"Status code is 500": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "48272c39-1d9f-4a5e-8174-54baf9a09f45",
 			"name": "Read Single CodeSnippet (Correct UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=d9212ce9-09b5-4e22-8820-3d319047b318",
-			"time": 4,
+			"time": 295,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				144,
+				92,
+				295
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "d9db9048-7d20-41ce-9751-1d6dd7d1eea9",
 			"name": "Update CodeSnippet All Prarams",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 4,
+			"time": 149,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				189,
+				93,
+				149
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "950d32dc-a3c8-45e2-a2f4-7e2f1fe2e1f4",
 			"name": "Update CodeSnippet No UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 4,
+			"time": 189,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				141,
+				83,
+				189
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "6e816990-eb7f-43dd-9a4c-8ab8344dfc2a",
 			"name": "Update CodeSnippet No Title",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 4,
+			"time": 151,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				182,
+				93,
+				151
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "df4a0cdb-d328-4eeb-854d-dc3bdc207c25",
 			"name": "Update CodeSnippet No Content",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 5,
+			"time": 188,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				153,
+				123,
+				188
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "6224b100-889e-47e1-b13a-ae292e4187cc",
 			"name": "Update CodeSnippet No Visibility",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 6,
+			"time": 121,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				6
+				135,
+				93,
+				121
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "d7aadf7e-aa27-446f-af0c-3ad94157f08c",
 			"name": "Update CodeSnippet No ProgrammingLanguage UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 5,
+			"time": 117,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
 			},
 			"tests": {
-				"Status code is 500": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 500": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				146,
+				191,
+				117
 			],
 			"allTests": [
 				{
-					"Status code is 500": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "114e82b2-b224-4cbd-9636-bee05692f566",
 			"name": "Delete Codesnippet With UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet?uuid=52abdb76-36dd-4c58-862c-2bebc3bcf1dd",
-			"time": 6,
+			"time": 113,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				6
+				101,
+				87,
+				113
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "cda8873b-1506-470b-8a28-1eddd6a46252",
 			"name": "Delete Codesnippet No UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/snippet",
-			"time": 4,
+			"time": 102,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				97,
+				93,
+				102
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "f170207b-8bcd-47ab-ae8b-2afc7edd5fd2",
 			"name": "Create Tag Wrong Name",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
-			"time": 4,
+			"time": 103,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				111,
+				146,
+				103
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "a276ba4a-52e2-4e33-8c5a-d2c41f8c273d",
 			"name": "Create Tag all Params",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
-			"time": 5,
+			"time": 98,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				112,
+				142,
+				98
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "4d6faf6b-0d4c-46ca-98fd-06227e7ad6d8",
 			"name": "Read Single Tag (Correct UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=b3e41499-8b04-45b9-bb71-c7b2a3a9fbd4",
-			"time": 3,
+			"time": 87,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				3
+				88,
+				143,
+				87
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "c3e8183b-f26f-469c-bf28-7f34e6c418ba",
 			"name": "Read All Tags",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag/all",
-			"time": 4,
+			"time": 89,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				106,
+				132,
+				89
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "43a1d0c4-8c2e-49c1-8d12-384fb78f5cb2",
 			"name": "Read Single Tag (Incorrect UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=none",
-			"time": 3,
+			"time": 163,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
 			},
 			"tests": {
-				"Status code is 500": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 500": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				3
+				111,
+				140,
+				163
 			],
 			"allTests": [
 				{
-					"Status code is 500": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "8f132225-a766-41dd-a45f-1af1c8e2a2cc",
 			"name": "Update Tag All Params",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
-			"time": 7,
+			"time": 97,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				7
+				103,
+				348,
+				97
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "4b7a56f1-c093-4b40-ad55-9068a5282a65",
 			"name": "Update Tag All Params No UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
-			"time": 3,
+			"time": 92,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				3
+				89,
+				161,
+				92
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "7efa49a8-2917-402b-b8c2-52f625bee612",
 			"name": "Update Tag All Params No Name",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
-			"time": 5,
+			"time": 111,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				95,
+				143,
+				111
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "f1172db5-5df4-456d-b190-1b3c9287ed4a",
 			"name": "Delete Tag",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag?uuid=bca68468-d7bc-4379-8574-147cab92b29a",
-			"time": 5,
+			"time": 113,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				90,
+				144,
+				113
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "b3581e8d-7051-4510-9fa5-0862b29a87df",
 			"name": "Delete Tag no UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/tag",
-			"time": 4,
+			"time": 104,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				94,
+				135,
+				104
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "c0a90d7f-6e9d-41af-830b-7fd000c2bd71",
 			"name": "Create Language (All Parameters)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 7,
+			"time": 153,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				7
+				156,
+				112,
+				153
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "3a194519-92ad-44fa-a260-4978fef25a93",
 			"name": "Create Language No Name",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 3,
+			"time": 102,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				3
+				133,
+				92,
+				102
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "6b73ed24-07a4-4964-b2e1-cf3db00fd1f3",
 			"name": "Create Language No Description",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 4,
+			"time": 107,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				140,
+				85,
+				107
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "4e3e4e86-ccc2-4aa3-bf92-3720b4108062",
 			"name": "Create Language No ImageURL",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 5,
+			"time": 106,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				124,
+				87,
+				106
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "2314c2fd-d763-4ffe-8818-a31e849ab6d4",
 			"name": "Read All Languages",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language/all",
-			"time": 4,
+			"time": 104,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				144,
+				87,
+				104
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "87c6c860-c114-4a46-a967-e0d2b662198f",
 			"name": "Read Single Language (Correct UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=c2c79790-814c-43bf-ac32-782709fb2c98",
-			"time": 19,
+			"time": 95,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				19
+				153,
+				91,
+				95
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "33525df5-63b2-4318-8b90-23877f0a5ce8",
 			"name": "Read Single Language (Incorrect UUID)",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=none",
-			"time": 5,
+			"time": 95,
 			"responseCode": {
 				"code": 500,
 				"name": "Internal Server Error"
 			},
 			"tests": {
-				"Status code is 500": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 500": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				155,
+				137,
+				95
 			],
 			"allTests": [
 				{
-					"Status code is 500": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "7dfa79ab-8afa-4bb4-a81a-1c726147af5b",
 			"name": "Update Language",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 6,
+			"time": 165,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				6
+				275,
+				96,
+				165
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "ee8895c4-b42e-48e2-825a-d7507dc7ffac",
 			"name": "Update Language No UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 4,
+			"time": 89,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				130,
+				105,
+				89
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "ad0f9b62-8015-4d4d-a74f-a5b60c7d1ae1",
 			"name": "Update Language No Name",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 5,
+			"time": 98,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				144,
+				85,
+				98
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "8df42bef-fb07-49e7-a2fc-3e4948962a62",
 			"name": "Update Language No Image URL",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 5,
+			"time": 114,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				5
+				226,
+				83,
+				114
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "a16e9913-1577-420c-8b6e-a0e322dac534",
 			"name": "Update Language No Description",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 4,
+			"time": 164,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				139,
+				90,
+				164
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "fd906d62-d8e6-4f65-9737-6f7168412590",
 			"name": "Delete Language with UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language?uuid=31098c72-7071-4c56-a723-59c13165c12d",
-			"time": 4,
+			"time": 158,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				4
+				98,
+				103,
+				158
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
 			]
 		},
 		{
 			"id": "eed5ab69-2001-474e-8b56-c875f535d319",
 			"name": "Delete Language without UUID",
-			"url": "http://localhost:8080/codesnippets-1.0-SNAPSHOT/api/language",
-			"time": 3,
+			"time": 145,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
 			},
 			"tests": {
-				"Status code is 400": true
+				"Status for admin": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status for user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for guest": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status for admin": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				3
+				91,
+				177,
+				145
 			],
 			"allTests": [
 				{
-					"Status code is 400": true
+					"Status for user": true
+				},
+				{
+					"Status for guest": true
+				},
+				{
+					"Status for admin": true
 				}
+			]
+		},
+		{
+			"id": "60ef3c87-8c17-41cc-b26d-ae97cf600b6d",
+			"name": "Logout",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6,
+				8,
+				9
+			],
+			"allTests": [
+				{},
+				{},
+				{}
+			]
+		},
+		{
+			"id": "48c64996-910f-4cdd-b161-8bb1b688eaf9",
+			"name": "Login Incorrect User",
+			"time": 8,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11,
+				10,
+				8
+			],
+			"allTests": [
+				{},
+				{},
+				{}
 			]
 		}
 	],
-	"count": 1,
-	"totalTime": 214,
+	"count": 3,
+	"totalTime": 18889,
 	"collection": {
 		"requests": [
+			{
+				"id": "7a199fd0-adaa-4951-af07-63c6c8b01f90",
+				"method": "POST"
+			},
+			{
+				"id": "b6a0d245-da69-4e02-89b1-8e6ecfe96f0e",
+				"method": "POST"
+			},
 			{
 				"id": "9ff6154e-1adf-4d96-a17a-1575ca7a8fef",
 				"method": "GET"
@@ -1305,6 +2036,14 @@
 			{
 				"id": "eed5ab69-2001-474e-8b56-c875f535d319",
 				"method": "DELETE"
+			},
+			{
+				"id": "60ef3c87-8c17-41cc-b26d-ae97cf600b6d",
+				"method": "GET"
+			},
+			{
+				"id": "48c64996-910f-4cdd-b161-8bb1b688eaf9",
+				"method": "POST"
 			}
 		]
 	}

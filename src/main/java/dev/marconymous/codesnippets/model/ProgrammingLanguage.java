@@ -1,6 +1,7 @@
 package dev.marconymous.codesnippets.model;
 
 import dev.marconymous.codesnippets.annotations.UUIDValidOrNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.FormParam;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ public class ProgrammingLanguage {
    */
   @FormParam("name")
   @NotNull
+  @NotBlank
   private String name;
 
   /**
@@ -33,6 +35,7 @@ public class ProgrammingLanguage {
    */
   @FormParam("description")
   @NotNull
+  @NotBlank
   private String description;
 
   /**
@@ -40,5 +43,6 @@ public class ProgrammingLanguage {
    */
   @FormParam("imageUrl")
   @NotNull
+  @NotBlank
   private String imageUrl;
 }

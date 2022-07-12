@@ -1,7 +1,5 @@
 package dev.marconymous.codesnippets;
 
-import jakarta.ws.rs.CookieParam;
-
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
@@ -17,35 +15,50 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Utils {
+  /**
+   * REGEX used for validating UUIDs
+   */
   public static final String UUID_REGEX = "|[\\da-fA-F]{8}-([\\da-fA-F]{4}-){3}[\\da-fA-F]{12}";
 
+  /**
+   * Generates a random UUID
+   *
+   * @return a random UUID as a String
+   */
   public static String UUIDString() {
     return UUID.randomUUID().toString();
   }
 
-  public static void executeIfNotNull(Object obj, Runnable runnable) {
-    if (obj != null) runnable.run();
-  }
-
+  /**
+   * Checks if any of the given Objects are null
+   *
+   * @param objs the Objects to check
+   * @return true if any of the given Objects are null, false otherwise
+   */
   public static boolean anyIsNull(Object... objs) {
     return Arrays.stream(objs).anyMatch(Objects::isNull);
-  }
-
-  public static boolean allAreNull(Object... objs) {
-    return Arrays.stream(objs).allMatch(Objects::isNull);
   }
 
   /**
    * @author Lokesh Gupta(<a href="https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/">https://howtodoinjava.com/java/java-security/aes-256-encryption-decryption/</a>)   *
    */
   public static class AES256 {
+    /**
+     * The secret key to be used for encryption and decryption
+     */
     private static final String SECRET_KEY = Config.getProperty("aes.secret.key");
+
+    /**
+     * The salt to be used for encryption and decryption
+     */
     private static final String SALT = Config.getProperty("aes.secret.salt");
 
-    private interface Executable {
-      String execute(IvParameterSpec ivSpec, SecretKeyFactory factory, KeySpec spec, SecretKey tmp, SecretKeySpec secretKey) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException;
-    }
-
+    /**
+     * Will execute the given Executable with the given parameters
+     *
+     * @param exec the Executable to execute
+     * @return the result of the Executable
+     */
     private static String execute(Executable exec) {
       try {
         byte[] iv = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -65,6 +78,12 @@ public class Utils {
       return null;
     }
 
+    /**
+     * Encrypts the given String
+     *
+     * @param strToEncrypt the String to encrypt
+     * @return the encrypted String
+     */
     public static String encrypt(String strToEncrypt) {
       return execute(
         (ivSpec, factory, spec, tmp, secretKey) -> {
@@ -76,6 +95,12 @@ public class Utils {
         });
     }
 
+    /**
+     * Decrypts the given String
+     *
+     * @param strToDecrypt the String to decrypt
+     * @return the decrypted String
+     */
     public static String decrypt(String strToDecrypt) {
       return execute(
         (ivSpec, factory, spec, tmp, secretKey) -> {
@@ -90,12 +115,26 @@ public class Utils {
           return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
         });
     }
+
+    private interface Executable {
+      String execute(IvParameterSpec ivSpec, SecretKeyFactory factory, KeySpec spec, SecretKey tmp, SecretKeySpec secretKey) throws IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException;
+    }
   }
 
   public static class Roles {
+    /**
+     * The role of a user
+     */
     public static final String USER = "user";
+
+    /**
+     * The role of an admin
+     */
     public static final String ADMIN = "admin";
 
-    public static final String LOGGIN_IN = "loggedIn";
+    /**
+     * The role of someone who is logging in before the 2FA is completed
+     */
+    public static final String LOGGING_IN = "loggedIn";
   }
 }

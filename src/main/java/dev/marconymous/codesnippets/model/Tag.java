@@ -4,7 +4,6 @@ package dev.marconymous.codesnippets.model;
 import dev.marconymous.codesnippets.annotations.UUIDValidOrNull;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.ws.rs.FormParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;

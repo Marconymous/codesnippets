@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,32 +21,29 @@ import java.util.stream.Collectors;
  * reads and writes the data in the JSON-files
  */
 public class DataHandler {
+  public static final HashMap<String, String> TWO_FA_KEYS = new HashMap<>();
+  private static final String USER_FILE = Config.getProperty("users.path");
+  private static final String LANGUAGE_FILE = Config.getProperty("languages.path");
+  private static final String TAGS_FILE = Config.getProperty("tags.path");
+  private static final String SNIPPETS_FILE = Config.getProperty("snippets.path");
   /**
    * List of all programming languages
    */
   @Getter
   @Setter
   private static List<ProgrammingLanguage> languageList;
-
   /**
    * List of all Code Snippets
    */
   @Getter
   @Setter
   private static List<CodeSnippet> codeSnippetList;
-
   /**
    * List of all Tags
    */
   @Getter
   @Setter
   private static List<Tag> tagList;
-
-  private static final String USER_FILE = Config.getProperty("users.path");
-
-  private static final String LANGUAGE_FILE = Config.getProperty("languages.path");
-  private static final String TAGS_FILE = Config.getProperty("tags.path");
-  private static final String SNIPPETS_FILE = Config.getProperty("snippets.path");
   @Getter
   @Setter
   private static List<User> userList;
@@ -57,17 +55,16 @@ public class DataHandler {
     readUserFile();
   }
 
-  private static void readUserFile() {
-    var data = readFileToList(USER_FILE, User[].class);
-    setUserList(data);
-  }
-
   /**
    * private constructor defeats instantiation
    */
   private DataHandler() {
   }
 
+  private static void readUserFile() {
+    var data = readFileToList(USER_FILE, User[].class);
+    setUserList(data);
+  }
 
   /**
    * Reads all Tags from the JSON-file

@@ -17,10 +17,14 @@ import java.util.Map;
 import static jakarta.ws.rs.core.Response.Status.UNAUTHORIZED;
 
 /**
+ * @author Marc Andri Fuchs
+ * <p>
  * Filter to check if user is logged in.
  */
 @Provider
 public class AuthorizationFilter implements ContainerRequestFilter {
+  private static final String USER_COOKIE_TOKEN = "token";
+
   @Context
   private ResourceInfo resourceInfo;
 
@@ -35,7 +39,7 @@ public class AuthorizationFilter implements ContainerRequestFilter {
   @Override
   public void filter(ContainerRequestContext requestContext) {
     var tokenCookie = requestContext.getCookies().entrySet().stream()
-      .filter(entry -> entry.getKey().equals("token")).findFirst()
+      .filter(entry -> entry.getKey().equals(USER_COOKIE_TOKEN)).findFirst()
       .map(Map.Entry::getValue).orElse(null);
 
     var called = resourceInfo.getResourceMethod();

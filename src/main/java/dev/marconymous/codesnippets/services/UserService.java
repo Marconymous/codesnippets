@@ -8,11 +8,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.NewCookie;
 import jakarta.ws.rs.core.Response;
 
-import java.util.HashMap;
-
 import static dev.marconymous.codesnippets.Utils.AES256.decrypt;
 import static dev.marconymous.codesnippets.Utils.AES256.encrypt;
-import static dev.marconymous.codesnippets.Utils.Roles.LOGGIN_IN;
+import static dev.marconymous.codesnippets.Utils.Roles.LOGGING_IN;
+import static dev.marconymous.codesnippets.data.DataHandler.TWO_FA_KEYS;
 
 @Path("user")
 public class UserService {
@@ -34,7 +33,7 @@ public class UserService {
   ) {
     var loggedInUser = DataHandler.getUser(user, pass);
     var userRole = loggedInUser.getRole();
-    var token = user + ";" + LOGGIN_IN + ";" + userRole;
+    var token = user + ";" + LOGGING_IN + ";" + userRole;
 
     var cookie = new NewCookie(
       "token",
@@ -50,36 +49,41 @@ public class UserService {
       .entity(loggedInUser.getUserName() + " logged in! (not 2FA)").build();
   }
 
-  private static final HashMap<String, String> twoFAExpected = new HashMap<>();
-
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("/get2FA")
-  @RolesAllowed(LOGGIN_IN)
+  @RolesAllowed(LOGGING_IN)
   public Response get2FA(
     @CookieParam("token") String token
   ) {
-    var words = new String[]{"book", "arrow", "chance", "woolen", "pack", "enclose", "critic", "will", "polish", "talk","shop", "hunger", "hire", "cruel", "mouse"};
+    var words = new String[]{"book", "arrow", "chance", "woolen", "pack", "enclose", "critic", "will", "polish", "talk", "shop", "hunger", "hire", "cruel", "mouse"};
     var random = words[(int) (Math.random() * words.length)];
 
 
     var decrypted = decrypt(token);
-    twoFAExpected.put(decrypted, random);
+    TWO_FA_KEYS.put(decrypted, random);
 
     return Response.ok().entity("{\"request\": \"" + random + "\"}").build();
   }
 
+  /**
+   * Used to validate the 2FA-request
+   *
+   * @param twoFA the 2FA-request
+   * @param token the token of the user
+   * @return a cookie with userdata
+   */
   @POST
   @Produces(MediaType.TEXT_PLAIN)
   @Path("/2fa")
-  @RolesAllowed(LOGGIN_IN)
+  @RolesAllowed(LOGGING_IN)
   public Response login2FA(
     @FormParam("2fa") String twoFA,
     @CookieParam("token") String token
   ) {
     var decrypted = decrypt(token);
-    var expected = twoFAExpected.get(decrypted);
-    twoFAExpected.remove(decrypted);
+    var expected = TWO_FA_KEYS.get(decrypted);
+    TWO_FA_KEYS.remove(decrypted);
     if (expected.equals(twoFA)) {
       var newValue = decrypted.split(";");
       newValue[1] = newValue[2];
